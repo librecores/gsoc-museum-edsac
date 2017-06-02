@@ -1,0 +1,43 @@
+module tank_decoder1
+  (output reg rack_clk,
+   output reg rack_down_dec_in,
+   output reg rack_up_dec_in,
+   output reg rack_down_dec_out,
+   output reg rack_up_dec_out,
+   output reg rack_down_t0_clr,
+   output reg rack_up_t0_clr,
+   output reg rack_down_t1_clr,
+   output reg rack_up_t1_clr,
+   output reg rack_down_t2_clr,
+   output reg rack_up_t2_clr,
+   output reg rack_down_t3_clr,
+   output reg rack_up_t3_clr,
+   output reg rack_mib,
+   output reg rack_mob,
+
+   input wire clk,
+   input wire cls_neg,
+   input wire rack_down_mob_t0,
+   input wire rack_up_mob_t0,
+   input wire rack_down_mob_t1,
+   input wire rack_up_mob_t1,
+   input wire rack_down_mob_t2,
+   input wire rack_up_mob_t2,
+   input wire rack_down_mob_t3,
+   input wire rack_up_mob_t3,
+   input wire rack_down_t0_in,
+   input wire rack_up_t0_in,
+   input wire rack_down_t1_in,
+   input wire rack_up_t1_in,
+   input wire rack_down_t2_in,
+   input wire rack_up_t2_in,
+   input wire rack_down_t3_in,
+   input wire rack_up_t3_in,
+   input wire rack_read,
+   input wire rack_write,
+   input wire f9_pos,
+   input wire mib);
+
+   // Body
+
+endmodule // tank_decoder1
