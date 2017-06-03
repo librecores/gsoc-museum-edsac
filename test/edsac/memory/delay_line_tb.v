@@ -5,17 +5,13 @@ module delay_line_tb();
    wire [3:0] monitor;
    reg        clk = 1'b0;
    reg        data_in = 1'b0;
-   reg        data_out_gate = 1'b0;
    reg        data_in_gate = 1'b0;
-   wire       data_out;
-   reg        data_clr = 1'b0;
+   reg        data_clr = 1'b1;
 
    delay_line #(2, 2) dl1 (
-                           .data_out(data_out),
                            .monitor(monitor),
                            .clk(clk),
                            .data_in(data_in),
-                           .data_out_gate(data_out_gate),
                            .data_in_gate(data_in_gate),
                            .data_clr(data_clr)
                            );
@@ -29,10 +25,8 @@ module delay_line_tb();
       data_in = 1'b1;
       #19 data_in = 1'b0;
       #24 data_in_gate = 1'b0;
-      #27 data_out_gate = 1'b1;
-      #81 data_out_gate = 1'b0;
-      #13 data_clr = 1'b1;
-      #53 data_clr = 1'b0;
+      #13 data_clr = 1'b0;
+      #66 data_clr = 1'b1;
       #43 $finish;
    end
 
