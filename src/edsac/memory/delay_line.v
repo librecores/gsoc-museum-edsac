@@ -1,7 +1,7 @@
 module delay_line
   #(parameter STORE_LEN  = 16,
     parameter WORD_WIDTH = 36
-    )
+   )
    (output wire [STORE_LEN*WORD_WIDTH-1:0] monitor,
 
     input wire                             clk,
