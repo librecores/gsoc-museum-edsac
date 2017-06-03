@@ -2,3 +2,10 @@
 ```bash
 iverilog -o delay_line delay_line_tb.v ../../../src/edsac/memory/delay_line.v && vvp delay_line && gtkwave delay_line.vcd &
 ```
+
+-----
+
+## memory_tb
+```bash
+iverilog -o mem_uut.out memory_tb.v ../../../src/edsac/memory/memory.v ../../../src/edsac/memory/delay_line.v && vvp mem_uut.out && gtkwave mem_uut.out &
+```
