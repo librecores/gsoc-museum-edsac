@@ -1,11 +1,22 @@
 module half_adder
-  (output reg sum,
-   output reg carry,
+  (output wire sum,
+   output wire del_carry,
 
-   input wire clk,
-   input wire operand_a,
-   input wire operand_b);
+   input wire  clk,
+   input wire  a,
+   input wire  b
+  );
 
-   // Body
+  wire carry;
 
-endmodule // half_adder
+  delay #(.INTERVAL(1)) del
+    (.out (del_carry),
+
+     .clk (clk),
+     .in  (carry)
+    );
+
+  assign sum   = a ^ b;
+  assign carry = a & b;
+
+endmodule

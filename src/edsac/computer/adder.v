@@ -1,14 +1,39 @@
+/* The original machine's logic reconstruction 
+ * indicates presence of an input signal evD1 
+ * which is ignored here for now.
+ */
+
 module adder
-  (output reg adder_sum,
+  (output wire sum,
 
-   input wire clk,
-   input wire adder_a,
-   input wire adder_b,
-   input wire ev_d1);
+   input wire  clk,
+   input wire  a,
+   input wire  b
+  );
 
-   // Two half adders to be instantiated here - 
-   // one with feedback and other without.
-   
-   // Body
+  wire sum0;
+  wire carry0_d;
+  wire carry_d;
+  wire c;
 
-endmodule // adder
+  half_adder ha0
+    (.sum       (sum0),
+     .del_carry (carry0_d),
+
+     .clk       (clk),
+     .a         (a),
+     .b         (b)
+    );
+
+  half_adder ha1
+    (.sum       (sum),
+     .del_carry (carry_d),
+
+     .clk       (clk),
+     .a         (sum0),
+     .b         (c)
+    );
+
+  assign c = carry0_d | carry_d;
+
+endmodule
