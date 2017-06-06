@@ -7,7 +7,7 @@ iverilog -o delay_line_uut.out delay_line_tb.v ../../../src/edsac/memory/delay_l
 
 ## delay_tb
 ```bash
-iverilog -o delay_uut.out delay_tb.v ../../../src/edsac/memory/delay.v && vvp delay_uut.out && gtkwave delay.vcd &
+iverilog -o delay_uut.out delay_tb.v ../../../src/edsac/memory/delay.v ../../../src/edsac/memory/delay_line.v && vvp delay_uut.out && gtkwave delay.vcd &
 ```
 
 -----

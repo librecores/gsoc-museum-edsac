@@ -22,11 +22,11 @@ module delay_tb();
       .in  (in)
      );
 
-   delay #(4) dl4_uut
+   delay #(1) dl4_uut
      (.out (out3),
 
       .clk (clk),
-      .in  (in)
+      .in  (out1)
      );
 
    initial begin
@@ -39,12 +39,12 @@ module delay_tb();
    always #5 clk = ~clk;
 
    always begin
-      #5 in = 1'b1;
-      #5 in = 1'b0;
-      #25 in = 1'b1;
-      #5 in = 1'b0;
-      #45 in = 1'b1;
-      #5 in = 1'b0;
+      #10 in = 1'b1;
+      #10 in = 1'b0;
+      #20 in = 1'b1;
+      #20 in = 1'b0;
+      #30 in = 1'b1;
+      #10 in = 1'b0;
    end
 
 endmodule

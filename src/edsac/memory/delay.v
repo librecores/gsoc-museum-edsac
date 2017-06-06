@@ -1,9 +1,3 @@
-/* Make the input bit available at the ouput after INTERVAL 
- * pulse intervals, i. e., delay the input by INTERVAL pulse 
- * intervals. A pulse interval was 2us long in the original 
- * machine.
- */
-
 module delay
   #(parameter INTERVAL = 1
    )
@@ -13,24 +7,17 @@ module delay
     input wire  in
    );
 
-   reg [INTERVAL:0] store;
-   integer          i;
+   reg data_clr = 1'b1;
+   reg data_in_gate = 1'b1;
 
-   initial
-     store = 0;
+   delay_line #(.STORE_LEN(1), .WORD_WIDTH(INTERVAL)) dl
+     (.monitor      (),
+      .data_out     (out),
 
-   // Propagate bits towards the output.
-   always @(posedge clk) begin
-      for (i = 0; i < INTERVAL; i = i + 1)
-        store[i] <= store[i+1];
-      store[INTERVAL] <= in;
-   end
-
-   always @(negedge clk) begin
-      if (store[0])
-        store[0] <= 1'b0;
-   end
-
-   assign out = store[0];
+      .clk          (clk),
+      .data_in      (in),
+      .data_in_gate (data_in_gate),
+      .data_clr     (data_clr)
+     );
 
 endmodule
