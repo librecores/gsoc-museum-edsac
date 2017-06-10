@@ -1,20 +1,27 @@
 module acc_shift_i
-  (output reg mob8,
-   output reg x1,
-   output reg x2,
-   output reg x3,
-   output reg x4,
+  (output wire       mob8,
+   output wire [3:0] x, // Gating EMFs to ASU II. x[0] corresponds to x1, x[1] to x2 and so on.
 
-   input wire clk,
-   input wire acc,
-   input wire c19,
-   input wire c7,
-   input wire c8,
-   input wire d17,
-   input wire d35,
-   input wire f1_neg,
-   input wire g5);
+   input wire        clk,
+   input wire        g5, // Accumulator shifting gate.
+   input wire        c7, // Right shift.
+   input wire        c8, // Left shift.
+   input wire        acc,
+   input wire        g13,
+   input wire        c19, // Store instructions T, U.
+   input wire        d17,
+   input wire        d35,
+   input wire        f1_neg
+  );
 
-   // Body
+   wire tmp;
 
-endmodule // acc_shift_i
+   assign x[0] = g5 & c7;
+   assign x[1] = ~x[0];
+   assign x[2] = ~x[3];
+   assign x[3] = g5 & c8;
+
+   assign tmp = (f1_neg & d17) | d35;
+   assign mob8 = g13 & acc & c19 & ~tmp & clk;
+
+endmodule
