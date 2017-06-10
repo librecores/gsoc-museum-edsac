@@ -1,6 +1,6 @@
 module acc_shift_i
   (output wire       mob8,
-   output wire [3:0] x, // Gating EMFs to ASU II. x[0] corresponds to x1, x[1] to x2 and so on.
+   output wire [3:0] x, // Gating EMFs to ASU II. x[0] corresponds to x1 of original logic, x[1] to x2 and so on.
 
    input wire        clk,
    input wire        g5, // Accumulator shifting gate.
