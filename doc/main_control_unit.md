@@ -16,6 +16,6 @@
 ### Stage 2
 - Once `r_pulse` is received, G13 is emitted,
     - to provide route from Order Tank to CU and all Flashing Units, and
-    - stimulating signal `r2` is sent to Computer (CCU).
+    - stimulating signal `r2` is sent to Computer.
 - Emits stimulating pulse to Computer (and to CU wherever required).
 - Emits gating EMF connecting Order Tank to SCT in case of sign pulse following CTO.
