@@ -1,0 +1,56 @@
+$date
+	Sun Jun 11 20:29:33 2017
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module flipflop_tb $end
+$var wire 1 ! out_bar $end
+$var wire 1 " out $end
+$var reg 1 # reset $end
+$var reg 1 $ set $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+0$
+0#
+0"
+1!
+$end
+#20
+0!
+1"
+1$
+#21
+0$
+#61
+1$
+#66
+0$
+#73
+1!
+0"
+1#
+#76
+0#
+#90
+1#
+#93
+0#
+#114
+0!
+1"
+1$
+#116
+0$
+#125
+1!
+0"
+1#
+#134
+0#
+#179
