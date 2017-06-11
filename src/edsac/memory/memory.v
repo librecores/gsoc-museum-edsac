@@ -1,34 +1,39 @@
 /* The EDSAC had 32 memory tanks, each designed to hold 
- * 16 long words (each 36-bit wide). It took 1.152 ms for 
- * one complete circulation. Thus 512 long words could 
- * be stored in all. Later in its lifetime, the capacity 
- * was doubled to 1024 long words.
+ * 16 full words (36 bits, 72 us delay). It took 1.152 ms for 
+ * one complete circulation. Thus 512 full words (576 bits) 
+ * could be stored in all. Later in its lifetime, the capacity 
+ * was doubled to 1024 full words.
  * 
- * The 32 tanks are distributed across 4 racks.
+ * The 32 tanks are distributed across 4 racks -
+ *     - rack F1, 8 tanks = 4 up + 4 down
+ *     - rack F2, 8 tanks = 4 up + 4 down
+ *     - rack R1, 8 tanks = 4 up + 4 down
+ *     - rack R2, 8 tanks = 4 up + 4 down
+ * Thus, the memory module defined below is instantiated 
+ * in an 32-length array by the top module. 0th corresponds 
+ * to Tank 0 in F1_up, 1st to Tank 1 in F1_up, ... , 
+ * 4th to Tank 0 in F1_down, ... and so on.
  */
 
 module memory
-  #(parameter STORE_LEN = 16,
-    parameter WORD_WIDTH = 36
-   )
-   (output wire [STORE_LEN*WORD_WIDTH-1:0] monitor,
-    output wire rack_loc_mob_t,
+   (output wire [575:0] monitor, // External long tank display for full 576 bits.
+    output wire         mob_tn,
 
-    input wire  rack_clk,
-    input wire  rack_mib,
-    input wire  rack_loc_t_in,
-    input wire  rack_loc_t_clr,
-    input wire  rack_loc_t_out
+    input wire          clk,
+    input wire          mib,
+    input wire          tn_in,
+    input wire          tn_clr,
+    input wire          tn_out
    );
 
-   delay_line #(STORE_LEN, WORD_WIDTH) dl
+   delay_line #(.STORE_LEN(16), .WORD_WIDTH(36)) dl
      (.monitor      (monitor),
-      .clk          (rack_clk),
-      .data_in      (rack_mib),
-      .data_in_gate (rack_loc_t_in),
-      .data_clr     (rack_loc_t_clr)
+      .clk          (clk),
+      .data_in      (mib),
+      .data_in_gate (tn_in),
+      .data_clr     (tn_clr)
      );
 
-   assign rack_loc_mob_t = rack_loc_t_out ? monitor[0] : 1'bz;
+   assign mob_tn = tn_out ? monitor[0] : 1'bz;
 
 endmodule

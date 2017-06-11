@@ -2,22 +2,22 @@
 
 module memory_tb();
 
-   wire [7:0] monitor;
-   wire       mob;
-   reg        clk = 1'b0;
-   reg        mib = 1'b0;
-   reg        t_in = 1'b0;
-   reg        t_clr = 1'b1;
-   reg        t_out = 1'b0;
+   wire [575:0] monitor;
+   wire         mob;
+   reg          clk = 1'b0;
+   reg          mib = 1'b0;
+   reg          t_in = 1'b0;
+   reg          t_clr = 1'b1;
+   reg          t_out = 1'b0;
 
-   memory #(2, 4) mem_uut
-     (.monitor        (monitor),
-      .rack_loc_mob_t (mob),
-      .rack_clk       (clk),
-      .rack_mib       (mib),
-      .rack_loc_t_in  (t_in),
-      .rack_loc_t_clr (t_clr),
-      .rack_loc_t_out (t_out)
+   memory mem_uut
+     (.monitor (monitor),
+      .mob_tn  (mob),
+      .clk     (clk),
+      .mib     (mib),
+      .tn_in   (t_in),
+      .tn_clr  (t_clr),
+      .tn_out  (t_out)
      );
 
    initial begin
