@@ -8,7 +8,7 @@ module delay_line
     input wire                            clk,
     input wire                            data_in,
     input wire                            data_in_gate,
-    input wire                            data_clr
+    input wire                            data_clr // Active low.
    );
 
    reg [STORE_LEN*WORD_WIDTH-1:0] store;
@@ -26,15 +26,7 @@ module delay_line
       for (i = 0; i < STORE_LEN*WORD_WIDTH-1; i = i + 1)
         store[i] <= store[i+1];
 
-      // Assuming one bit is cleared with each clock cycle when 
-      // data_clr is low (active low). Original machine behaviour 
-      // documentation not found in this regard.
-      if (data_in_gate)
-        store[STORE_LEN*WORD_WIDTH-1] <= data_in;
-      else if (~data_clr)
-        store[STORE_LEN*WORD_WIDTH-1] <= 1'b0;
-      else
-        store[STORE_LEN*WORD_WIDTH-1] <= store[0];
+      store[STORE_LEN*WORD_WIDTH-1] <= (data_in_gate) ? data_in : (store[0] & data_clr);
    end
 
    always @(negedge clk) begin
