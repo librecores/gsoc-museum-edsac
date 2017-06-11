@@ -12,7 +12,7 @@
 |  8 | U n (T') |     00111     | Transfer from Accumulator to memory position `n` without clearing Accumulator
 |  9 | I n      |     01000     | Read next row of holes on Input Tape and put in least significant 5 bits ofmemory position `n`
 | 10 | O n      |     01001     | Print character represented by most significant 5 bits of number in memory position 'n'
-| 11 | E n (D)  |     00011     | If Accumulator is positive, jump to memory location `n`, otherwise proceed serially
+| 11 | E n (D)  |     00011     | If Accumulator is positivev(>= 0), jump to memory location `n`, otherwise proceed serially
 | 12 | G n (-)  |     11011     | If Accumulator is negative, jump to memory location `n`, otherwise proceed serially
 | 13 | R n      |     00100     | Shift contents of Accumulator `n` places to the right (1 <= n <= 10)
 | 14 | L n      |     11001     | Shift contents of Accumulator `n` places to the left (1 <= n <= 10)

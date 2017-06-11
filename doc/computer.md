@@ -14,7 +14,7 @@
 -----
 
 ### Accumulator Shifting Unit
-When number is just circulating, provides 2 p.i. delay (no shifting - G5 is low, irrespective of C6, C7, C8).
+When number is just circulating, provides 2 p.i. delay (no shifting - `g5` is low, irrespective of `c6`, `c7`, `c8`).
 
 #### ASU I
 - Used for extraction of numbers from the Accumulator.
