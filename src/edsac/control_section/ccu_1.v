@@ -53,7 +53,7 @@ module ccu_1
    assign odd_d35 = g1_pos & d35;
 
    // ev_d1_dz logic.
-   // TODO. This is unclear.
+   // TODO: This is unclear.
    delay #(.INTERVAL(1)) dl_evd1dz
      (.out (dl_da_dn),
       .clk (clk),
