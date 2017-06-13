@@ -1,24 +1,80 @@
+/* Flipflops in Order Flashing Unit are set by gating Order (from Order 
+ * Tank, Stage 2 of main control, instruction execution).
+ * 
+ * TODO: There is slight ambiguity in the original report as to when 
+ *       the Order Flashing Unit is engaged - it could be just before 
+ *       Stage 1 concludes (once the requisite order from Memory 
+ *       is transferred into Order Tank or immediately after Stage 2 
+ *       commences. It is simply a matter of gating.
+ */
+
 module order_flash
-  (output reg f13_pos,
-   output reg f13_neg,
-   output reg f14_pos,
-   output reg f14_neg,
-   output reg f15_pos,
-   output reg f15_neg,
-   output reg f16_pos,
-   output reg f16_neg,
-   output reg f17_pos,
-   output reg f17_neg,
-   output reg order_flash_rdy,
+  (output wire f13_pos, // Order bit 13 (opcode bit 0, least significant).
+   output wire f13_neg,
+   output wire f14_pos, // Order bit 14 (opcode bit 1).
+   output wire f14_neg,
+   output wire f15_pos, // Order bit 15 (opcode bit 2).
+   output wire f15_neg,
+   output wire f16_pos, // Order bit 16 (opcode bit 3).
+   output wire f16_neg,
+   output wire f17_pos, // Order bit 17 (opcode bit 4, most significant).
+   output wire f17_neg,
+   output wire order_flash_rdy, // Indicates Order Flashing flipflops are set.
 
-   input wire d31,
-   input wire d32,
-   input wire d33,
-   input wire d34,
-   input wire d35,
-   input wire epsep,
-   input wire order);
+   input wire  d31,
+   input wire  d32,
+   input wire  d33,
+   input wire  d34,
+   input wire  d35,
+   input wire  g13, // Stage 2 of main control.
+   input wire  epsep, // Indicates end of Stage 2.
+   input wire  order // Order pulse train from Order Tank.
+  );
 
-   // Body
+   wire [4:0] opcode_bit;
+   wire       ofl_rdy_in;
 
-endmodule // order_flash
+   // Opcode flipflops
+   flipflop ff13
+     (.out     (f13_pos),
+      .out_bar (f13_neg),
+      .set     (opcode_bit[0]),
+      .reset   (epsep)
+     );
+   flipflop ff14
+     (.out     (f14_pos),
+      .out_bar (f14_neg),
+      .set     (opcode_bit[1]),
+      .reset   (epsep)
+     );
+   flipflop ff15
+     (.out     (f15_pos),
+      .out_bar (f15_neg),
+      .set     (opcode_bit[2]),
+      .reset   (epsep)
+     );
+   flipflop ff16
+     (.out     (f16_pos),
+      .out_bar (f16_neg),
+      .set     (opcode_bit[3]),
+      .reset   (epsep)
+     );
+   flipflop ff17
+     (.out     (f17_pos),
+      .out_bar (f17_neg),
+      .set     (opcode_bit[4]),
+      .reset   (epsep)
+     );
+
+   // Order Flashing Unit ready flipflop.
+   flipflop ff_order_flash_rdy
+     (.out     (order_flash_rdy),
+      .out_bar (), // Unconnected.
+      .set     (ofl_rdy_in),
+      .reset   (epsep)
+     );
+
+   assign opcode_bit[4:0] = {5{order}} & {d35, d34, d33, d32, d31};
+   assign ofl_rdy_in      = d35 & g13;
+
+endmodule
