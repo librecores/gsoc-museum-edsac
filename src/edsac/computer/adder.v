@@ -11,29 +11,34 @@ module adder
    input wire  b
   );
 
-  wire sum0;
-  wire carry0_d;
-  wire carry_d;
-  wire c;
+   wire sum0;
+   wire sumi;
+   wire carry0_d;
+   wire carry_d;
+   wire c;
 
-  half_adder ha0
-    (.sum       (sum0),
-     .del_carry (carry0_d),
+   half_adder ha0
+     (.sum       (sum0),
+      .del_carry (carry0_d),
+      .clk       (clk),
+      .a         (a),
+      .b         (b)
+     );
 
-     .clk       (clk),
-     .a         (a),
-     .b         (b)
-    );
+   half_adder ha1
+     (.sum       (sumi),
+      .del_carry (carry_d),
+      .clk       (clk),
+      .a         (sum0),
+      .b         (c)
+     );
 
-  half_adder ha1
-    (.sum       (sum),
-     .del_carry (carry_d),
+   assign c = carry0_d | carry_d;
 
-     .clk       (clk),
-     .a         (sum0),
-     .b         (c)
-    );
-
-  assign c = carry0_d | carry_d;
+   delay #(.INTERVAL(2)) dl
+     (.out (sum),
+      .clk (clk),
+      .in  (sumi)
+     );
 
 endmodule
