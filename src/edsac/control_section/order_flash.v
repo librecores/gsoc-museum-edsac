@@ -1,11 +1,7 @@
-/* Flipflops in Order Flashing Unit are set by gating Order (from Order 
- * Tank, Stage 2 of main control, instruction execution).
- * 
- * TODO: There is slight ambiguity in the original report as to when 
- *       the Order Flashing Unit is engaged - it could be just before 
- *       Stage 1 concludes (once the requisite order from Memory 
- *       is transferred into Order Tank or immediately after Stage 2 
- *       commences. It is simply a matter of gating.
+/* Flipflops in Order Flashing Unit are set by gating Order from Order 
+ * Tank, Stage 2 of main control, instruction execution. Order is gated 
+ * with g13 (Stage 2 of main control) in the Order Tank, so the flipflops 
+ * are set up right after Stage 2 commences.
  */
 
 module order_flash
