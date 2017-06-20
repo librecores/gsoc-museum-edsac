@@ -12,9 +12,10 @@
  */
 
 module tank_flash
-  (output wire f1_pos, // Indicats instruction length.
+  (output wire f1_pos, // Indicates instruction length, when high, long word.
    output wire f1_neg,
-   output wire f2_pos, // Indicates odd or even short word.
+   output wire f2_pos, // Indicates which half of the M/C the short word 
+                       // occupies - when high, second half.
    output wire f7_pos, // Tank address bit 7. To Tank Decoder 2 (final stage).
    output wire f8_pos, // Tank address bit 8. To Tank Decoder 2 (final stage).
    output wire f9_pos, // Tank address bit 9.  To Tank Decoder 1 (second stage).

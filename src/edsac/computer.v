@@ -65,7 +65,7 @@ module computer
    input wire  jump_uc,
 
    // Tank Number Flashing Unit (TFL).
-   input wire  f1_neg, // Indicates instruction length.
+   input wire  f1_neg, // Indicates instruction length - f1_pos, when high, indicates a full word.
 
    // Transfer Unit (XFR).
    input wire  mib // Main Input Bus.
