@@ -4,7 +4,7 @@ module digit_pulse_generator
    input wire         clk
   );
 
-   reg [5:0]   count = 6'b00_0000;
+   reg [5:0]   count = 6'b11_1111;
    wire [35:0] outi;
    genvar      i;
    genvar      j;
