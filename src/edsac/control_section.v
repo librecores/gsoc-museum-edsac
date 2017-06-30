@@ -1,0 +1,103 @@
+/* Top module for Control Section L1 subsystem.
+*/
+
+module control_section (
+  // Initial Order Loader or Starter.
+  output wire s2,
+
+  input wire  ep9,
+  input wire  reset_cntr_neg, // From Starter Unit. Active low.
+  input wire  starter,
+  input wire  starter_neg,
+  input wire  reset_sct_neg // From Starter Unit. Active low.
+
+  // Computer.
+  output wire g1_pos, // Indicates odd cycle.
+  output wire g1_neg, // Indicates even cycle.
+  output wire ev_d1_dz, // Used in Complementer/Collater when inserting trailing ones in a negated number
+  output wire ev_d1,
+  output wire da_m,
+  output wire ds,
+  output wire g5, // Accumulator shifting gate.
+  output wire g6_pos, // Used in Multiplicand Tank for gating.
+  output wire ccu_ones,
+  output wire g2_pos, // Multiplicand and shifting gate.
+  output wire g2_neg, // Inverse Multiplicand and shifting gate.
+  output wire g3_pos, // Controls output from Multiplicand Tank to Adder.
+  output wire g4_pos, // Complementer gate.
+  output wire g4_neg,
+  output wire g9_neg, // Accumulator clear gate.
+  output wire g10_neg, // Multiplier clear gate.
+  output wire g11_neg, // Multiplicand clear gate.
+  output wire dv, // Sign test pulse for E order (jump if Acc >= 0), output to Accumulator.
+  output wire jump_uc,
+  output wire r2, // Stimulating pulse received from MCU, indicates completion of loading.
+                  // To Multiplier, Printer and Tape Reader.
+  output wire g12, // Indicates Stage 1 of main control in progress. To Multiplicand.
+  output wire g13, // Indicates Stage 2 of main control in progress. To Multiplicand.
+  output wire f1_neg, // Inverted order bit 1 indicating instruction length. To ASU 1.
+  output wire mib, // To Multiplier and Multiplicand.
+
+  input wire  mcand_in,
+  input wire  da_n, // From Multiplicand.
+  input wire  ds_r, // Sign bit propagation for right shifts, produced 
+                    // in Accumulator in response to ds (coming from CCU 2).
+  input wire  ep4, // From the Multiplier.
+  input wire  dx_m, // Response to digit test pulse (dx), signalled when corresponding bit is 1.
+                    // From the Multiplier.
+  input wire  dv_d, // Response to dv pulse sent by CCU 10 to Accumulator.
+                    // From Accumulator.
+  output wire dx, // Digit test pulse for Multiplier.
+
+  // Digit Pulse Generator.
+  input wire  d0,
+  input wire  d1,
+  input wire  d2,
+  input wire  d7,
+  input wire  d18,
+  input wire  d19,
+  input wire  d20,
+  input wire  d25,
+  input wire  d26,
+  input wire  d27,
+  input wire  d28,
+  input wire  d29,
+  input wire  d31,
+  input wire  d32,
+  input wire  d33,
+  input wire  d34,
+  input wire  d35,
+
+  // Printer ad Tape Reader.
+  output wire ep_done, // From MCU.
+
+  input wire  ep10,
+  input wire  ep8,
+  input wire  stop_one_a,
+  input wire  stop_one_c,
+
+  // Order Coder.
+  output wire c1, // To Multiplicand.
+  output wire c2, // To Complementer-Collater.
+  output wire c3, // To Complementer-Collater.
+  output wire c4, // To Complementer-Collater.
+  output wire c7, // To Complementer-Collater and ASU 1.
+  output wire c8, // To ASU 1.
+  output wire c9, // To Complementer-Collater.
+  output wire c10, // To Accumulator.
+  output wire c16, // To Tape Reader.
+  output wire c18, // To Multiplier.
+  output wire c19, // To ASU 1.
+  output wire c21, // To Multiplicand and Printer.
+  output wire c25, // To Accumulator.
+
+  // Transfer Unit
+  input wire mob_asu1,
+  input wire mob_tape,
+  input wire mob_starter,
+  input wire mob_printer,
+
+  input wire  clk
+  );
+
+endmodule
