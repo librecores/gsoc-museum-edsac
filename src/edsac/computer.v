@@ -71,11 +71,15 @@ module computer (
   );
 
   wire       adder_sum, adder_a, adder_b;
-  wire       acc, acc1;
+  wire       acc; // Gated output to ASU I.
+  wire       acc1; // Least significant half of Accumulator, output to ASU II.
   wire       mcand, mplier;
   wire [3:0] x; // Gating EMFs from ASU I to ADU II. x[0] corresponds 
                 // to x1 of original logic, x[1] to x2 and so on.
 
+  // EDSAC's accumulator is broken into two tanks and the composite is of 71 bits (or 71 p.i.).
+  // 1 M/C (= 36 p.i.) delay in Accumulator I.
+  // 1 M/C - 4 p.i. (= 32 p.i.) delay in Accumulator II.
   accumulator accumulator (
     .acc       (acc),
     .acc1      (acc1),
@@ -126,6 +130,7 @@ module computer (
     .b   (adder_b)
     );
 
+  // Complementer/Collater/Distribution Unit III is a composite unit
   compl_collater compl_collater (
     .adder_b  (adder_b),
 
@@ -143,6 +148,8 @@ module computer (
     .mplier   (mplier)
     );
 
+  // Multiplicand Tank is a 36 bit 72 us delay line. This serves 
+  // as an input to the Computer (arithmetic unit).
   multiplicand multiplicand (
     .da_n     (da_n),
     .mcand    (mcand),
@@ -162,6 +169,8 @@ module computer (
     .mib      (mib)
     );
 
+  // Multiplier Tank is 36-bit (72 us) delay line with 
+  // recirculation, just like the Multiplicand Tank.
   multiplier multiplier (
     .mpier   (mplier),
     .dx_m    (dx_m),
