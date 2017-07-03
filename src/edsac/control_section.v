@@ -1,5 +1,5 @@
 /* Top module for Control Section L1 subsystem.
-*/
+ */
 
 module control_section (
   // Initial Order Loader or Starter.
@@ -91,7 +91,7 @@ module control_section (
   output wire c21, // To Multiplicand and Printer.
   output wire c25, // To Accumulator.
 
-  // Memory Unit.
+  // Memory Unit. All the signals in this section are referenced in memory_top.v.
   output wire f1_down_t0_clr,
   output wire f1_up_t0_clr,
   output wire f1_down_t1_clr,
