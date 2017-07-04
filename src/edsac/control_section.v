@@ -240,10 +240,20 @@ xx  input wire  d29,
   wire f7_pos;
   wire f8_pos;
   wire f9_pos;
-  wire f10_pos;
-  wire f11_pos;
+  wire f10_pos; // Tank address bit 10.
+  wire f11_pos; // Tank address bit 11.
   wire epsep;
   wire order_sct;
+  wire f1_read;
+  wire f1_write;
+  wire f2_read;
+  wire f2_write;
+  wire r1_read;
+  wire r1_write;
+  wire r2_read;
+  wire r2_write;
+  wire c17a; // F, I, T, U, Starter order.
+  wire cu_gate_pos;
 
   tank_flash tank_flash (
     .f1_pos    (f1_pos),
@@ -264,6 +274,27 @@ xx  input wire  d29,
     .d29       (d29),
     .epsep     (epsep),
     .g12       (g12),
-    .order_sct (order_sct),
+    .order_sct (order_sct)
     );
+
+/* This is the first stage of Tank decoding to determine rack to be 
+ * selected - F1, F2, R1 or R2. Additional control signal determine 
+ * access type - read or write.
+ */
+  tank_decoder0 tank_decoder0 (
+    .f1_read     (f1_read),
+    .f1_write    (f1_write),
+    .f2_read     (f2_read),
+    .f2_write    (f2_write),
+    .r1_read     (r1_read),
+    .r1_write    (r1_write),
+    .r2_read     (r2_read),
+    .r2_write    (r2_write),
+
+    .c17a        (c17a),
+    .f10_pos     (f10_pos),
+    .f11_pos     (f11_pos),
+    .cu_gate_pos (cu_gate_pos),
+   );
+
 endmodule
