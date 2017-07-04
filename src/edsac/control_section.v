@@ -33,9 +33,9 @@ module control_section (
   output wire jump_uc,
   output wire r2, // Stimulating pulse received from MCU, indicates completion of loading.
                   // To Multiplier, Printer and Tape Reader.
-  output wire g12, // Indicates Stage 1 of main control in progress. To Multiplicand.
+xx  output wire g12, // Indicates Stage 1 of main control in progress. To Multiplicand.
   output wire g13, // Indicates Stage 2 of main control in progress. To Multiplicand.
-  output wire f1_neg, // Inverted order bit 1 indicating instruction length. To ASU 1.
+xx  output wire f1_neg, // Inverted order bit 1 indicating instruction length. To ASU 1.
   output wire mib, // To Multiplier and Multiplicand.
 
   input wire  mcand_in,
@@ -55,13 +55,13 @@ module control_section (
   input wire  d2,
   input wire  d7,
   input wire  d18,
-  input wire  d19,
-  input wire  d20,
-  input wire  d25,
-  input wire  d26,
-  input wire  d27,
-  input wire  d28,
-  input wire  d29,
+xx  input wire  d19,
+xx  input wire  d20,
+xx  input wire  d25,
+xx  input wire  d26,
+xx  input wire  d27,
+xx  input wire  d28,
+xx  input wire  d29,
   input wire  d31,
   input wire  d32,
   input wire  d33,
@@ -235,4 +235,35 @@ module control_section (
   input wire  clk
   );
 
+  wire f1_pos;
+  wire f2_pos;
+  wire f7_pos;
+  wire f8_pos;
+  wire f9_pos;
+  wire f10_pos;
+  wire f11_pos;
+  wire epsep;
+  wire order_sct;
+
+  tank_flash tank_flash (
+    .f1_pos    (f1_pos),
+    .f1_neg    (f1_neg),
+    .f2_pos    (f2_pos),
+    .f7_pos    (f7_pos),
+    .f8_pos    (f8_pos),
+    .f9_pos    (f9_pos),
+    .f10_pos   (f10_pos),
+    .f11_pos   (f11_pos),
+
+    .d19       (d19),
+    .d20       (d20),
+    .d25       (d25),
+    .d26       (d26),
+    .d27       (d27),
+    .d28       (d28),
+    .d29       (d29),
+    .epsep     (epsep),
+    .g12       (g12),
+    .order_sct (order_sct),
+    );
 endmodule
