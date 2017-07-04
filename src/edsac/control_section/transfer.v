@@ -15,6 +15,19 @@ module transfer (
   input wire  r2_mob
   );
 
-  // Body
+  wire mob_delay;
+  wire mob_tmp;
 
-endmodule // transfer
+  assign mob_tmp = mob_asu1 | mob_tape | mob_starter | mob_printer | f1_mob | f2_mob | r1_mob | r2_mob;
+
+  // Half minor cycle, i.e., 18 p.i. delay
+  delay #(.INTERVAL(18)) pp_dl (
+    .out (mob_delay),
+    .clk (clk),
+    .in  (mib)
+  );
+  assign mob = (f1_pos & mob_tmp) |
+               (f2_pos & mob_tmp) |
+               (~f2_pos & ~f1_pos & mob_delay);
+
+endmodule
