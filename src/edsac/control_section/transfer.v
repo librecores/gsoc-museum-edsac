@@ -7,8 +7,8 @@
 
 module transfer (
   output wire mib,
-  output wire mob,
 
+  input wire  mob,
   input wire  clk,
   input wire  f1_pos, // Indicates instruction length, when high, long word.
   input wire  f2_pos,  // Indicates which half of the M/C the short word 
@@ -33,10 +33,10 @@ module transfer (
   delay #(.INTERVAL(18)) pp_dl (
     .out (mob_delay),
     .clk (clk),
-    .in  (mib)
+    .in  (mob)
   );
 
-  assign mob = (f1_pos & mob_tmp) |
+  assign mib = (f1_pos & mob_tmp) |
                (f2_pos & mob_tmp) |
                (~f2_pos & ~f1_pos & mob_delay);
 
