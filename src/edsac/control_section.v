@@ -274,6 +274,54 @@ module control_section (
   wire r2_up_in;
   wire r2_down_out;
   wire r2_up_out;
+  wire f1_down_f7_pos;
+  wire f1_down_f7_neg;
+  wire f1_down_f8_pos;
+  wire f1_down_f8_neg;
+  wire f1_down_t_in;
+  wire f1_down_t_out;
+  wire f1_up_f7_pos;
+  wire f1_up_f7_neg;
+  wire f1_up_f8_pos;
+  wire f1_up_f8_neg;
+  wire f1_up_t_in;
+  wire f1_up_t_out;
+  wire f2_down_f7_pos;
+  wire f2_down_f7_neg;
+  wire f2_down_f8_pos;
+  wire f2_down_f8_neg;
+  wire f2_down_t_in;
+  wire f2_down_t_out;
+  wire f2_up_f7_pos;
+  wire f2_up_f7_neg;
+  wire f2_up_f8_pos;
+  wire f2_up_f8_neg;
+  wire f2_up_t_in;
+  wire f2_up_t_out;
+  wire r1_down_f7_pos;
+  wire r1_down_f7_neg;
+  wire r1_down_f8_pos;
+  wire r1_down_f8_neg;
+  wire r1_down_t_in;
+  wire r1_down_t_out;
+  wire r1_up_f7_pos;
+  wire r1_up_f7_neg;
+  wire r1_up_f8_pos;
+  wire r1_up_f8_neg;
+  wire r1_up_t_in;
+  wire r1_up_t_out;
+  wire r2_down_f7_pos;
+  wire r2_down_f7_neg;
+  wire r2_down_f8_pos;
+  wire r2_down_f8_neg;
+  wire r2_down_t_in;
+  wire r2_down_t_out;
+  wire r2_up_f7_pos;
+  wire r2_up_f7_neg;
+  wire r2_up_f8_pos;
+  wire r2_up_f8_neg;
+  wire r2_up_t_in;
+  wire r2_up_t_out;
 
   tank_flash tank_flash (
     .f1_pos    (f1_pos),
@@ -467,6 +515,150 @@ module control_section (
     .rack_down_t3_in  (r2_down_t3_in),
     .rack_up_t3_in    (r2_up_t3_in),
     .mib              (mib)
+    );
+
+  tank_decoder2 tank_decoder2_f1_down (
+    .rack_loc_t0_in  (f1_down_t0_in),
+    .rack_loc_t1_in  (f1_down_t1_in),
+    .rack_loc_t2_in  (f1_down_t2_in),
+    .rack_loc_t3_in  (f1_down_t3_in),
+    .rack_loc_t0_out (f1_down_t0_out),
+    .rack_loc_t1_out (f1_down_t1_out),
+    .rack_loc_t2_out (f1_down_t2_out),
+    .rack_loc_t3_out (f1_down_t3_out),
+
+    .rack_loc_f7_pos (f1_down_f7_pos),
+    .rack_loc_f7_neg (f1_down_f7_neg),
+    .rack_loc_f8_pos (f1_down_f8_pos),
+    .rack_loc_f8_neg (f1_down_f8_neg),
+    .rack_loc_t_in   (f1_down_t_in),
+    .rack_loc_t_out  (f1_down_t_out)
+    );
+
+  tank_decoder2 tank_decoder2_f1_up (
+    .rack_loc_t0_in  (f1_up_t0_in),
+    .rack_loc_t1_in  (f1_up_t1_in),
+    .rack_loc_t2_in  (f1_up_t2_in),
+    .rack_loc_t3_in  (f1_up_t3_in),
+    .rack_loc_t0_out (f1_up_t0_out),
+    .rack_loc_t1_out (f1_up_t1_out),
+    .rack_loc_t2_out (f1_up_t2_out),
+    .rack_loc_t3_out (f1_up_t3_out),
+
+    .rack_loc_f7_pos (f1_up_f7_pos),
+    .rack_loc_f7_neg (f1_up_f7_neg),
+    .rack_loc_f8_pos (f1_up_f8_pos),
+    .rack_loc_f8_neg (f1_up_f8_neg),
+    .rack_loc_t_in   (f1_up_t_in),
+    .rack_loc_t_out  (f1_up_t_out)
+    );
+
+  tank_decoder2 tank_decoder2_f2_down (
+    .rack_loc_t0_in  (f2_down_t0_in),
+    .rack_loc_t1_in  (f2_down_t1_in),
+    .rack_loc_t2_in  (f2_down_t2_in),
+    .rack_loc_t3_in  (f2_down_t3_in),
+    .rack_loc_t0_out (f2_down_t0_out),
+    .rack_loc_t1_out (f2_down_t1_out),
+    .rack_loc_t2_out (f2_down_t2_out),
+    .rack_loc_t3_out (f2_down_t3_out),
+
+    .rack_loc_f7_pos (f2_down_f7_pos),
+    .rack_loc_f7_neg (f2_down_f7_neg),
+    .rack_loc_f8_pos (f2_down_f8_pos),
+    .rack_loc_f8_neg (f2_down_f8_neg),
+    .rack_loc_t_in   (f2_down_t_in),
+    .rack_loc_t_out  (f2_down_t_out)
+    );
+
+  tank_decoder2 tank_decoder2_f2_up (
+    .rack_loc_t0_in  (f2_up_t0_in),
+    .rack_loc_t1_in  (f2_up_t1_in),
+    .rack_loc_t2_in  (f2_up_t2_in),
+    .rack_loc_t3_in  (f2_up_t3_in),
+    .rack_loc_t0_out (f2_up_t0_out),
+    .rack_loc_t1_out (f2_up_t1_out),
+    .rack_loc_t2_out (f2_up_t2_out),
+    .rack_loc_t3_out (f2_up_t3_out),
+
+    .rack_loc_f7_pos (f2_up_f7_pos),
+    .rack_loc_f7_neg (f2_up_f7_neg),
+    .rack_loc_f8_pos (f2_up_f8_pos),
+    .rack_loc_f8_neg (f2_up_f8_neg),
+    .rack_loc_t_in   (f2_up_t_in),
+    .rack_loc_t_out  (f2_up_t_out)
+    );
+
+  tank_decoder2 tank_decoder2_r1_down (
+    .rack_loc_t0_in  (r1_down_t0_in),
+    .rack_loc_t1_in  (r1_down_t1_in),
+    .rack_loc_t2_in  (r1_down_t2_in),
+    .rack_loc_t3_in  (r1_down_t3_in),
+    .rack_loc_t0_out (r1_down_t0_out),
+    .rack_loc_t1_out (r1_down_t1_out),
+    .rack_loc_t2_out (r1_down_t2_out),
+    .rack_loc_t3_out (r1_down_t3_out),
+
+    .rack_loc_f7_pos (r1_down_f7_pos),
+    .rack_loc_f7_neg (r1_down_f7_neg),
+    .rack_loc_f8_pos (r1_down_f8_pos),
+    .rack_loc_f8_neg (r1_down_f8_neg),
+    .rack_loc_t_in   (r1_down_t_in),
+    .rack_loc_t_out  (r1_down_t_out)
+    );
+
+  tank_decoder2 tank_decoder2_r1_up (
+    .rack_loc_t0_in  (r1_up_t0_in),
+    .rack_loc_t1_in  (r1_up_t1_in),
+    .rack_loc_t2_in  (r1_up_t2_in),
+    .rack_loc_t3_in  (r1_up_t3_in),
+    .rack_loc_t0_out (r1_up_t0_out),
+    .rack_loc_t1_out (r1_up_t1_out),
+    .rack_loc_t2_out (r1_up_t2_out),
+    .rack_loc_t3_out (r1_up_t3_out),
+
+    .rack_loc_f7_pos (r1_up_f7_pos),
+    .rack_loc_f7_neg (r1_up_f7_neg),
+    .rack_loc_f8_pos (r1_up_f8_pos),
+    .rack_loc_f8_neg (r1_up_f8_neg),
+    .rack_loc_t_in   (r1_up_t_in),
+    .rack_loc_t_out  (r1_up_t_out)
+    );
+
+  tank_decoder2 tank_decoder2_r2_down (
+    .rack_loc_t0_in  (r2_down_t0_in),
+    .rack_loc_t1_in  (r2_down_t1_in),
+    .rack_loc_t2_in  (r2_down_t2_in),
+    .rack_loc_t3_in  (r2_down_t3_in),
+    .rack_loc_t0_out (r2_down_t0_out),
+    .rack_loc_t1_out (r2_down_t1_out),
+    .rack_loc_t2_out (r2_down_t2_out),
+    .rack_loc_t3_out (r2_down_t3_out),
+
+    .rack_loc_f7_pos (r2_down_f7_pos),
+    .rack_loc_f7_neg (r2_down_f7_neg),
+    .rack_loc_f8_pos (r2_down_f8_pos),
+    .rack_loc_f8_neg (r2_down_f8_neg),
+    .rack_loc_t_in   (r2_down_t_in),
+    .rack_loc_t_out  (r2_down_t_out)
+    );
+
+  tank_decoder2 tank_decoder2_r2_up (
+    .rack_loc_t0_in  (r2_up_t0_in),
+    .rack_loc_t1_in  (r2_up_t1_in),
+    .rack_loc_t2_in  (r2_up_t2_in),
+    .rack_loc_t3_in  (r2_up_t3_in),
+    .rack_loc_t0_out (r2_up_t0_out),
+    .rack_loc_t1_out (r2_up_t1_out),
+    .rack_loc_t2_out (r2_up_t2_out),
+    .rack_loc_t3_out (r2_up_t3_out),
+
+    .rack_loc_f7_pos (r2_up_f7_pos),
+    .rack_loc_f7_neg (r2_up_f7_neg),
+    .rack_loc_f8_pos (r2_up_f8_pos),
+    .rack_loc_f8_neg (r2_up_f8_neg),
+    .rack_loc_t_in   (r2_up_t_in),
+    .rack_loc_t_out  (r2_up_t_out)
     );
 
 endmodule
