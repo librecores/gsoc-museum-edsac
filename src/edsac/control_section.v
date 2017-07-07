@@ -661,4 +661,92 @@ module control_section (
     .rack_loc_t_out  (r2_up_t_out)
     );
 
+  tank_dist tank_dist_f1 (
+    .rack_down_f7_pos (f1_down_f7_pos),
+    .rack_up_f7_pos   (f1_up_f7_pos),
+    .rack_down_f7_neg (f1_down_f7_neg),
+    .rack_up_f7_neg   (f1_up_f7_neg),
+    .rack_down_f8_pos (f1_down_f8_pos),
+    .rack_up_f8_pos   (f1_up_f8_pos),
+    .rack_down_f8_neg (f1_down_f8_neg),
+    .rack_up_f8_neg   (f1_up_f8_neg),
+    .rack_down_t_in   (f1_down_t_in),
+    .rack_up_t_in     (f1_up_t_in),
+    .rack_down_t_out  (f1_down_t_out),
+    .rack_up_t_out    (f1_up_t_out),
+
+    .rack_down_in     (f1_down_in),
+    .rack_down_out    (f1_down_out),
+    .rack_up_in       (f1_up_in),
+    .rack_up_out      (f1_up_out),
+    .f7_pos           (f7_pos),
+    .f8_pos           (f8_pos)
+    );
+
+  tank_dist tank_dist_f2 (
+    .rack_down_f7_pos (f2_down_f7_pos),
+    .rack_up_f7_pos   (f2_up_f7_pos),
+    .rack_down_f7_neg (f2_down_f7_neg),
+    .rack_up_f7_neg   (f2_up_f7_neg),
+    .rack_down_f8_pos (f2_down_f8_pos),
+    .rack_up_f8_pos   (f2_up_f8_pos),
+    .rack_down_f8_neg (f2_down_f8_neg),
+    .rack_up_f8_neg   (f2_up_f8_neg),
+    .rack_down_t_in   (f2_down_t_in),
+    .rack_up_t_in     (f2_up_t_in),
+    .rack_down_t_out  (f2_down_t_out),
+    .rack_up_t_out    (f2_up_t_out),
+
+    .rack_down_in     (f2_down_in),
+    .rack_down_out    (f2_down_out),
+    .rack_up_in       (f2_up_in),
+    .rack_up_out      (f2_up_out),
+    .f7_pos           (f7_pos),
+    .f8_pos           (f8_pos)
+    );
+
+  tank_dist tank_dist_r1 (
+    .rack_down_f7_pos (r1_down_f7_pos),
+    .rack_up_f7_pos   (r1_up_f7_pos),
+    .rack_down_f7_neg (r1_down_f7_neg),
+    .rack_up_f7_neg   (r1_up_f7_neg),
+    .rack_down_f8_pos (r1_down_f8_pos),
+    .rack_up_f8_pos   (r1_up_f8_pos),
+    .rack_down_f8_neg (r1_down_f8_neg),
+    .rack_up_f8_neg   (r1_up_f8_neg),
+    .rack_down_t_in   (r1_down_t_in),
+    .rack_up_t_in     (r1_up_t_in),
+    .rack_down_t_out  (r1_down_t_out),
+    .rack_up_t_out    (r1_up_t_out),
+
+    .rack_down_in     (r1_down_in),
+    .rack_down_out    (r1_down_out),
+    .rack_up_in       (r1_up_in),
+    .rack_up_out      (r1_up_out),
+    .f7_pos           (f7_pos),
+    .f8_pos           (f8_pos)
+    );
+
+  tank_dist tank_dist_r2 (
+    .rack_down_f7_pos (r2_down_f7_pos),
+    .rack_up_f7_pos   (r2_up_f7_pos),
+    .rack_down_f7_neg (r2_down_f7_neg),
+    .rack_up_f7_neg   (r2_up_f7_neg),
+    .rack_down_f8_pos (r2_down_f8_pos),
+    .rack_up_f8_pos   (r2_up_f8_pos),
+    .rack_down_f8_neg (r2_down_f8_neg),
+    .rack_up_f8_neg   (r2_up_f8_neg),
+    .rack_down_t_in   (r2_down_t_in),
+    .rack_up_t_in     (r2_up_t_in),
+    .rack_down_t_out  (r2_down_t_out),
+    .rack_up_t_out    (r2_up_t_out),
+
+    .rack_down_in     (r2_down_in),
+    .rack_down_out    (r2_down_out),
+    .rack_up_in       (r2_up_in),
+    .rack_up_out      (r2_up_out),
+    .f7_pos           (f7_pos),
+    .f8_pos           (f8_pos)
+    );
+
 endmodule
