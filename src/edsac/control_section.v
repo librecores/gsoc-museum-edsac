@@ -334,6 +334,7 @@ module control_section (
   wire f17_neg;
   wire order_flash_rdy;
   wire order;
+  wire cntr;
 
   tank_flash tank_flash (
     .f1_pos    (f1_pos),
@@ -782,6 +783,15 @@ module control_section (
     .g13             (g13),
     .epsep           (epsep),
     .order           (order)
+    );
+
+  counter counter (
+    .cntr           (cntr),
+
+    .clk            (clk),
+    .d2             (d2),
+    .d20            (d20),
+    .reset_cntr_neg (reset_cntr_neg)
     );
 
 endmodule
