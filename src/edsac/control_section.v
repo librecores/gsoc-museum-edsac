@@ -322,6 +322,18 @@ module control_section (
   wire r2_up_f8_neg;
   wire r2_up_t_in;
   wire r2_up_t_out;
+  wire f13_pos;
+  wire f13_neg;
+  wire f14_pos;
+  wire f14_neg;
+  wire f15_pos;
+  wire f15_neg;
+  wire f16_pos;
+  wire f16_neg;
+  wire f17_pos;
+  wire f17_neg;
+  wire order_flash_rdy;
+  wire order;
 
   tank_flash tank_flash (
     .f1_pos    (f1_pos),
@@ -747,6 +759,29 @@ module control_section (
     .rack_up_out      (r2_up_out),
     .f7_pos           (f7_pos),
     .f8_pos           (f8_pos)
+    );
+
+  order_flash order_flash (
+    .f13_pos         (f13_pos),
+    .f13_neg         (f13_neg),
+    .f14_pos         (f14_pos),
+    .f14_neg         (f14_neg),
+    .f15_pos         (f15_pos),
+    .f15_neg         (f15_neg),
+    .f16_pos         (f16_pos),
+    .f16_neg         (f16_neg),
+    .f17_pos         (f17_pos),
+    .f17_neg         (f17_neg),
+    .order_flash_rdy (order_flash_rdy),
+
+    .d31             (d31),
+    .d32             (d32),
+    .d33             (d33),
+    .d34             (d34),
+    .d35             (d35),
+    .g13             (g13),
+    .epsep           (epsep),
+    .order           (order)
     );
 
 endmodule
