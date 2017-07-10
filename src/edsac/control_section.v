@@ -254,6 +254,7 @@ module control_section (
   wire r2_write;
   wire c17a; // F, I, T, U, Starter order.
   wire cu_gate_pos;
+  wire cu_gate_neg;
   wire f1_mob;
   wire f2_mob;
   wire r1_mob;
@@ -335,6 +336,9 @@ module control_section (
   wire order_flash_rdy;
   wire order;
   wire cntr;
+  wire sct;
+  wire s1;
+  wire r_pulse;
 
   tank_flash tank_flash (
     .f1_pos    (f1_pos),
@@ -792,6 +796,26 @@ module control_section (
     .d2             (d2),
     .d20            (d20),
     .reset_cntr_neg (reset_cntr_neg)
+    );
+
+  coincidence coincidence (
+    .cu_gate_pos (cu_gate_pos),
+    .cu_gate_neg (cu_gate_neg),
+    .order_sct   (order_sct),
+    .r_pulse     (r_pulse),
+
+    .clk         (clk),
+    .cntr        (cntr),
+    .sct         (sct),
+    .order       (order),
+    .s1          (s1),
+    .d2          (d2),
+    .d20         (d20),
+    .d7          (d7),
+    .d25         (d25),
+    .d0          (d0),
+    .d18         (d18),
+    .f1_neg      (f1_neg)
     );
 
 endmodule
