@@ -351,6 +351,27 @@ module control_section (
   wire c17;
   wire c26;
   wire stop_one_b;
+  wire seventy_d35;
+  wire da;
+  wire dy;
+  wire c5;
+  wire c6;
+  wire zero_d0;
+
+  timing_ctrl_shift timing_ctrl_shift (
+    .seventy_d35 (seventy_d35),
+    .da          (da),
+    .dx          (dx),
+    .dy          (dy),
+    .g2_pos      (g2_pos),
+    .g2_neg      (g2_neg),
+
+    .clk         (clk),
+    .c5          (c5),
+    .c6          (c6),
+    .zero_d0     (zero_d0),
+    .d35         (d35)
+    );
 
   tank_flash tank_flash (
     .f1_pos    (f1_pos),
