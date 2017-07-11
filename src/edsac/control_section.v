@@ -342,6 +342,9 @@ module control_section (
   wire order_clr;
   wire eng_mode_neg;
   wire eng_order;
+  wire sct_clear_gate;
+  wire sct_in_gate;
+  wire sct_one;
 
   tank_flash tank_flash (
     .f1_pos    (f1_pos),
@@ -834,6 +837,18 @@ module control_section (
     .eng_order    (eng_order),
     .epsep        (epsep),
     .starter_neg  (starter_neg)
+    );
+
+  sequence_ctrl_tank sequence_ctrl_tank (
+      .sct (sct),
+
+      .clk (clk),
+      .g12 (g12),
+      .sct_clear_gate (sct_clear_gate),
+      .sct_in_gate (sct_in_gate),
+      .sct_one (sct_one),
+      .order (order),
+      .reset_sct_neg (reset_sct_neg)
     );
 
 endmodule
