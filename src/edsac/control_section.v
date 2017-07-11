@@ -345,6 +345,12 @@ module control_section (
   wire sct_clear_gate;
   wire sct_in_gate;
   wire sct_one;
+  wire ep;
+  wire single_ep;
+  wire stop_neg;
+  wire c17;
+  wire c26;
+  wire stop_one_b;
 
   tank_flash tank_flash (
     .f1_pos    (f1_pos),
@@ -849,6 +855,34 @@ module control_section (
       .sct_one (sct_one),
       .order (order),
       .reset_sct_neg (reset_sct_neg)
+    );
+
+  main_ctrl main_ctrl (
+    .ep_done        (ep_done),
+    .g12            (g12),
+    .g13            (g13),
+    .r2             (r2),
+    .s1             (s1),
+    .s2             (s2),
+    .sct_clear_gate (sct_clear_gate),
+    .sct_in_gate    (sct_in_gate),
+    .sct_one        (sct_one),
+
+    .clk            (clk),
+    .ep             (ep),
+    .single_ep      (single_ep),
+    .stop_neg       (stop_neg),
+    .r_pulse        (r_pulse),
+    .d0             (d0),
+    .c17            (c17),
+    .c21            (c21),
+    .c26            (c26),
+    .d18            (d18),
+    .dv_d           (dv_d),
+    .eng_mode_neg   (eng_mode_neg),
+    .stop_one_a     (stop_one_a),
+    .stop_one_b     (stop_one_b),
+    .stop_one_c     (stop_one_c)
     );
 
 endmodule
