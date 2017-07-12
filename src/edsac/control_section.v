@@ -357,6 +357,24 @@ module control_section (
   wire c5;
   wire c6;
   wire zero_d0;
+  wire mob;
+
+  transfer transfer (
+    .mib         (mob),
+
+    .mob         (mib),
+    .clk         (clk),
+    .f1_pos      (f1_pos),
+    .f2_pos      (f2_pos), 
+    .mob_asu1    (mob_asu1),
+    .mob_tape    (mob_tape),
+    .mob_starter (mob_starter),
+    .mob_printer (mob_printer),
+    .f1_mob      (f1_mob),
+    .f2_mob      (f2_mob),
+    .r1_mob      (r1_mob),
+    .r2_mob      (r2_mob)
+    );
 
   timing_ctrl_shift timing_ctrl_shift (
     .seventy_d35 (seventy_d35),
