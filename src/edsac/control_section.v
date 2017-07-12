@@ -358,6 +358,23 @@ module control_section (
   wire c6;
   wire zero_d0;
   wire mob;
+  wire o_dy_0;
+  wire o_dy_1;
+  wire o_dy_2;
+  wire o_dy_3;
+
+  order_decoder1 order_decoder1 (
+    .o_dy_0          (o_dy_0),
+    .o_dy_1          (o_dy_1),
+    .o_dy_2          (o_dy_2),
+    .o_dy_3          (o_dy_3),
+
+    .f16_pos         (f16_pos),
+    .f16_neg         (f16_neg),
+    .f17_pos         (f17_pos),
+    .f17_neg         (f17_neg),
+    .order_flash_rdy (order_flash_rdy)
+    );
 
   transfer transfer (
     .mib         (mob),
