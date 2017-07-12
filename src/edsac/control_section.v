@@ -362,6 +362,38 @@ module control_section (
   wire o_dy_1;
   wire o_dy_2;
   wire o_dy_3;
+  wire op_a;
+  wire op_b;
+  wire op_blank;
+  wire op_c;
+  wire op_d;
+  wire op_delta;
+  wire op_e;
+  wire op_erase;
+  wire op_f;
+  wire op_g;
+  wire op_h;
+  wire op_i;
+  wire op_j;
+  wire op_k;
+  wire op_l;
+  wire op_m;
+  wire op_n;
+  wire op_o;
+  wire op_p;
+  wire op_phi;
+  wire op_pi;
+  wire op_q;
+  wire op_r;
+  wire op_s;
+  wire op_t;
+  wire op_theta;
+  wire op_u;
+  wire op_v;
+  wire op_w;
+  wire op_x;
+  wire op_y;
+  wire op_z;
 
   order_decoder1 order_decoder1 (
     .o_dy_0          (o_dy_0),
@@ -374,6 +406,82 @@ module control_section (
     .f17_pos         (f17_pos),
     .f17_neg         (f17_neg),
     .order_flash_rdy (order_flash_rdy)
+    );
+
+  order_decoder2 order_decoder2_0 (
+    .op1     (op_p),
+    .op2     (op_q),
+    .op3     (op_w),
+    .op4     (op_e),
+    .op5     (op_r),
+    .op6     (op_t),
+    .op7     (op_y),
+    .op8     (op_u),
+
+    .f13_pos (f13_pos),
+    .f13_neg (f13_neg),
+    .f14_pos (f14_pos),
+    .f14_neg (f14_neg),
+    .f15_pos (f15_pos),
+    .f15_neg (f15_neg),
+    .o_dy    (o_dy_0)
+    );
+
+  order_decoder2 order_decoder2_1 (
+    .op1     (op_i),
+    .op2     (op_o),
+    .op3     (op_j),
+    .op4     (op_pi),
+    .op5     (op_s),
+    .op6     (op_z),
+    .op7     (op_k),
+    .op8     (op_erase),
+
+    .f13_pos (f13_pos),
+    .f13_neg (f13_neg),
+    .f14_pos (f14_pos),
+    .f14_neg (f14_neg),
+    .f15_pos (f15_pos),
+    .f15_neg (f15_neg),
+    .o_dy    (o_dy_1)
+    );
+
+  order_decoder2 order_decoder2_2 (
+    .op1     (op_blank),
+    .op2     (op_f),
+    .op3     (op_theta),
+    .op4     (op_d),
+    .op5     (op_phi),
+    .op6     (op_h),
+    .op7     (op_n),
+    .op8     (op_m),
+
+    .f13_pos (f13_pos),
+    .f13_neg (f13_neg),
+    .f14_pos (f14_pos),
+    .f14_neg (f14_neg),
+    .f15_pos (f15_pos),
+    .f15_neg (f15_neg),
+    .o_dy    (o_dy_2)
+    );
+
+  order_decoder2 order_decoder2_3 (
+    .op1     (op_delta),
+    .op2     (op_l),
+    .op3     (op_x),
+    .op4     (op_g),
+    .op5     (op_a),
+    .op6     (op_b),
+    .op7     (op_c),
+    .op8     (op_v),
+
+    .f13_pos (f13_pos),
+    .f13_neg (f13_neg),
+    .f14_pos (f14_pos),
+    .f14_neg (f14_neg),
+    .f15_pos (f15_pos),
+    .f15_neg (f15_neg),
+    .o_dy    (o_dy_3)
     );
 
   transfer transfer (
