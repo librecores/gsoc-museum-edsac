@@ -44,26 +44,26 @@
  *   V     |    11111
  */
 
-module order_decoder2
-  (output wire op1,
-   output wire op2,
-   output wire op3,
-   output wire op4,
-   output wire op5,
-   output wire op6,
-   output wire op7,
-   output wire op8,
+module order_decoder2 (
+  output wire op1,
+  output wire op2,
+  output wire op3,
+  output wire op4,
+  output wire op5,
+  output wire op6,
+  output wire op7,
+  output wire op8,
 
-   input wire  f13_pos, // Order bit 13 (opcode bit 0), least significant. From Order Flashing Unit.
-   input wire  f13_neg,
-   input wire  f14_pos, // Order bit 14 (opcode bit 1). From Order Flashing Unit.
-   input wire  f14_neg,
-   input wire  f15_pos, // Order bit 15 (opcode bit 2). From Order Flashing Unit.
-   input wire  f15_neg,
-   input wire  o_dy // From Order Decoder 1, selects one of the four Order Decoder 2 Units.
+  input wire  f13_pos, // Order bit 13 (opcode bit 0), least significant. From Order Flashing Unit.
+  input wire  f13_neg,
+  input wire  f14_pos, // Order bit 14 (opcode bit 1). From Order Flashing Unit.
+  input wire  f14_neg,
+  input wire  f15_pos, // Order bit 15 (opcode bit 2). From Order Flashing Unit.
+  input wire  f15_neg,
+  input wire  o_dy // From Order Decoder 1, selects one of the four Order Decoder 2 Units.
   );
 
-   wire [2:0] count = {f15_pos, f14_pos, f13_pos};
-   assign {op8, op7, op6, op5, op4, op3, op2, op1} = o_dy ? (8'b0000_0001 << count[2:0]) : 8'b0000_0000;
+  wire [2:0] count = {f15_pos, f14_pos, f13_pos};
+  assign {op8, op7, op6, op5, op4, op3, op2, op1} = o_dy ? (8'b0000_0001 << count[2:0]) : 8'b0000_0000;
 
 endmodule

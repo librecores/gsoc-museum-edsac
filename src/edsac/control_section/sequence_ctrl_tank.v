@@ -24,46 +24,46 @@
  *       assume this hypothesis to be true.
  */
 
-module sequence_ctrl_tank
-  (output wire sct, // Goes to Coincidence Unit during Stage 1.
+module sequence_ctrl_tank (
+  output wire sct, // Goes to Coincidence Unit during Stage 1.
 
-   input wire  clk,
-   input wire  g12, // Stage 1 of main control.
-   input wire  sct_clear_gate, // Active low.
-   input wire  sct_in_gate, // In case of conditional transfer orders, admits order into SCT.
-   input wire  sct_one, // From MCU, increments value by one.
-   input wire  order, // Order from Order Tank when conditional transfer order is to be executed.
-   input wire  reset_sct_neg // From Starter Unit. Active low.
+  input wire  clk,
+  input wire  g12, // Stage 1 of main control.
+  input wire  sct_clear_gate, // Active low.
+  input wire  sct_in_gate, // In case of conditional transfer orders, admits order into SCT.
+  input wire  sct_one, // From MCU, increments value by one.
+  input wire  order, // Order from Order Tank when conditional transfer order is to be executed.
+  input wire  reset_sct_neg // From Starter Unit. Active low.
   );
 
-   wire sct_store_in;
-   wire sct_store_out;
-   wire hf_out;
-   wire scti;
+  wire sct_store_in;
+  wire sct_store_out;
+  wire hf_out;
+  wire scti;
 
-   assign sct_store_in = (sct_in_gate & order) | (sct_clear_gate & reset_sct_neg & hf_out);
+  assign sct_store_in = (sct_in_gate & order) | (sct_clear_gate & reset_sct_neg & hf_out);
 
-   // 36 us 18 bit SCT delay line.
-   delay #(.INTERVAL(18)) sct_store
-     (.out (sct_store_out),
-      .clk (clk),
-      .in  (sct_store_in)
-     );
+  // 36 us 18 bit SCT delay line.
+  delay #(.INTERVAL(18)) sct_store (
+    .out (sct_store_out),
+    .clk (clk),
+    .in  (sct_store_in)
+    );
 
-   half_adder hf
-     (.sum       (hf_out),
-      .del_carry (), // Unconnected.
-      .clk       (clk),
-      .a         (sct_one),
-      .b         (sct_store_out)
-     );
+  half_adder hf (
+    .sum       (hf_out),
+    .del_carry (), // Unconnected.
+    .clk       (clk),
+    .a         (sct_one),
+    .b         (sct_store_out)
+    );
 
-   delay #(.INTERVAL(2)) dl_hf
-     (.out (scti),
-      .clk (clk),
-      .in  (hf_out)
-     );
+  delay #(.INTERVAL(2)) dl_hf (
+    .out (scti),
+    .clk (clk),
+    .in  (hf_out)
+    );
 
-   assign sct = g12 ? scti : 1'b0;
+  assign sct = g12 ? scti : 1'b0;
 
 endmodule

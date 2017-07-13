@@ -4,37 +4,37 @@
  * level module.
  */
 
-module tank_dist
-  (output wire rack_down_f7_pos,
-   output wire rack_up_f7_pos,
-   output wire rack_down_f7_neg,
-   output wire rack_up_f7_neg,
-   output wire rack_down_f8_pos,
-   output wire rack_up_f8_pos,
-   output wire rack_down_f8_neg,
-   output wire rack_up_f8_neg,
-   output wire rack_down_t_in,
-   output wire rack_up_t_in,
-   output wire rack_down_t_out,
-   output wire rack_up_t_out,
+module tank_dist (
+  output wire rack_down_f7_pos,
+  output wire rack_up_f7_pos,
+  output wire rack_down_f7_neg,
+  output wire rack_up_f7_neg,
+  output wire rack_down_f8_pos,
+  output wire rack_up_f8_pos,
+  output wire rack_down_f8_neg,
+  output wire rack_up_f8_neg,
+  output wire rack_down_t_in,
+  output wire rack_up_t_in,
+  output wire rack_down_t_out,
+  output wire rack_up_t_out,
 
-   input wire  rack_down_in,
-   input wire  rack_down_out,
-   input wire  rack_up_in,
-   input wire  rack_up_out,
-   input wire  f7_pos, // Tank address bit 7.
-   input wire  f8_pos // Tank address bit 8.
+  input wire  rack_down_in,
+  input wire  rack_down_out,
+  input wire  rack_up_in,
+  input wire  rack_up_out,
+  input wire  f7_pos, // Tank address bit 7.
+  input wire  f8_pos // Tank address bit 8.
   );
 
-   assign {rack_up_f7_pos, rack_down_f7_pos} = {2{f7_pos}};
-   assign {rack_up_f7_neg, rack_down_f7_neg} = {2{~f7_pos}};
-   assign {rack_up_f8_pos, rack_down_f8_pos} = {2{f8_pos}};
-   assign {rack_up_f8_neg, rack_down_f8_neg} = {2{~f8_pos}};
+  assign {rack_up_f7_pos, rack_down_f7_pos} = {2{f7_pos}};
+  assign {rack_up_f7_neg, rack_down_f7_neg} = {2{~f7_pos}};
+  assign {rack_up_f8_pos, rack_down_f8_pos} = {2{f8_pos}};
+  assign {rack_up_f8_neg, rack_down_f8_neg} = {2{~f8_pos}};
 
-   // Input/output gating signals used in final stage of Tank Decoding.
-   assign rack_down_t_in = rack_down_in;
-   assign rack_up_t_in = rack_up_in;
-   assign rack_down_t_out = rack_down_out;
-   assign rack_up_t_out = rack_up_out;
+  // Input/output gating signals used in final stage of Tank Decoding.
+  assign rack_down_t_in = rack_down_in;
+  assign rack_up_t_in = rack_up_in;
+  assign rack_down_t_out = rack_down_out;
+  assign rack_up_t_out = rack_up_out;
 
 endmodule

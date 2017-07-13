@@ -3,8 +3,8 @@
  * pulses.
  */
 
-module ccu_6
-  (output wire ep,
+module ccu_6 (
+   output wire ep,
    output wire ccu_ones,
 
    input wire  ep0,
@@ -22,7 +22,7 @@ module ccu_6
    input wire  ones1,
    input wire  ones2,
    input wire  ones4
-  );
+   );
 
    assign ep       = ep0 | ep1 | ep2 | ep3 | ep4 | ep5 | ep6 | ep7 | ep8 | ep9 | ep10 | ep11;
    assign ccu_ones = ones1 | ones2 | ones4;

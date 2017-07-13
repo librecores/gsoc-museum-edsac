@@ -34,7 +34,7 @@ module transfer (
     .out (mob_delay),
     .clk (clk),
     .in  (mob)
-  );
+    );
 
   assign mib = (f1_pos & mob_tmp) |
                (f2_pos & mob_tmp) |

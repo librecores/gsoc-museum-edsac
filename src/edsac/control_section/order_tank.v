@@ -28,41 +28,41 @@
  * 13-17: Opcode bits.
  */
 
-module order_tank
-  (output wire order,
+module order_tank (
+  output wire order,
 
-   input wire  clk,
-   input wire  cu_gate_pos, // Coincidence Gate.
-   input wire  g12, // Stage 1 of main control.
-   input wire  g13, // Stage 2 of main control.
-   input wire  order_clr,
-   input wire  mob, // Main Output Bus.
-   input wire  eng_mode_neg,
-   input wire  eng_order,
-   input wire  epsep,
-   input wire  starter_neg
+  input wire  clk,
+  input wire  cu_gate_pos, // Coincidence Gate.
+  input wire  g12, // Stage 1 of main control.
+  input wire  g13, // Stage 2 of main control.
+  input wire  order_clr,
+  input wire  mob, // Main Output Bus.
+  input wire  eng_mode_neg,
+  input wire  eng_order,
+  input wire  epsep,
+  input wire  starter_neg
   );
 
-   wire data_out;
-   wire data_clr;
-   wire data_in_gate;
+  wire data_out;
+  wire data_clr;
+  wire data_in_gate;
 
-   // TODO: What happens when cu_gate_pos is high but (g12 is low or Stage 2 
-   // is in effect)? We definitely need recirculation of order in Order Tank 
-   // while in Stage 2.
-   assign data_clr     = ~(cu_gate_pos | order_clr);
-   assign data_in_gate = cu_gate_pos & g12;
+  // TODO: What happens when cu_gate_pos is high but (g12 is low or Stage 2 
+  // is in effect)? We definitely need recirculation of order in Order Tank 
+  // while in Stage 2.
+  assign data_clr     = ~(cu_gate_pos | order_clr);
+  assign data_in_gate = cu_gate_pos & g12;
 
-   // 18 bit 36 us Order Tank with recirculation.
-   delay_line #(.STORE_LEN(1), .WORD_WIDTH(18)) order_store
-     (.monitor      (), // Unconnected.
-      .data_out     (data_out),
-      .clk          (clk),
-      .data_in      (mob),
-      .data_in_gate (data_in_gate),
-      .data_clr     (data_clr)
-     );
+  // 18 bit 36 us Order Tank with recirculation.
+  delay_line #(.STORE_LEN(1), .WORD_WIDTH(18)) order_store (
+    .monitor      (), // Unconnected.
+    .data_out     (data_out),
+    .clk          (clk),
+    .data_in      (mob),
+    .data_in_gate (data_in_gate),
+    .data_clr     (data_clr)
+    );
 
-   assign order = (starter_neg & g13) ? data_out : 1'b0;
+  assign order = (starter_neg & g13) ? data_out : 1'b0;
 
 endmodule

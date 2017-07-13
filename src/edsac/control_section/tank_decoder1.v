@@ -27,74 +27,74 @@
  *       recirculation and data_in, so inverting in-gates becomes redundant.
  */
 
-module tank_decoder1
-  (output wire rack_down_in,
-   output wire rack_up_in,
-   output wire rack_down_out,
-   output wire rack_up_out,
-   output wire rack_down_t0_clr,
-   output wire rack_up_t0_clr,
-   output wire rack_down_t1_clr,
-   output wire rack_up_t1_clr,
-   output wire rack_down_t2_clr,
-   output wire rack_up_t2_clr,
-   output wire rack_down_t3_clr,
-   output wire rack_up_t3_clr,
-   output wire rack_mib,
-   output wire rack_mob,
+module tank_decoder1 (
+  output wire rack_down_in,
+  output wire rack_up_in,
+  output wire rack_down_out,
+  output wire rack_up_out,
+  output wire rack_down_t0_clr,
+  output wire rack_up_t0_clr,
+  output wire rack_down_t1_clr,
+  output wire rack_up_t1_clr,
+  output wire rack_down_t2_clr,
+  output wire rack_up_t2_clr,
+  output wire rack_down_t3_clr,
+  output wire rack_up_t3_clr,
+  output wire rack_mib,
+  output wire rack_mob,
 
-//   input wire  clk,
-   input wire  rack_read,
-   input wire  rack_write,
-   input wire  f9_pos, // Tank address bit 9.
-//   input wire  cls_neg,
-   input wire  rack_down_mob_t0,
-   input wire  rack_up_mob_t0,
-   input wire  rack_down_mob_t1,
-   input wire  rack_up_mob_t1,
-   input wire  rack_down_mob_t2,
-   input wire  rack_up_mob_t2,
-   input wire  rack_down_mob_t3,
-   input wire  rack_up_mob_t3,
-   input wire  rack_down_t0_in,
-   input wire  rack_up_t0_in,
-   input wire  rack_down_t1_in,
-   input wire  rack_up_t1_in,
-   input wire  rack_down_t2_in,
-   input wire  rack_up_t2_in,
-   input wire  rack_down_t3_in,
-   input wire  rack_up_t3_in,
-   input wire  mib
+  //   input wire  clk,
+  input wire  rack_read,
+  input wire  rack_write,
+  input wire  f9_pos, // Tank address bit 9.
+  //   input wire  cls_neg,
+  input wire  rack_down_mob_t0,
+  input wire  rack_up_mob_t0,
+  input wire  rack_down_mob_t1,
+  input wire  rack_up_mob_t1,
+  input wire  rack_down_mob_t2,
+  input wire  rack_up_mob_t2,
+  input wire  rack_down_mob_t3,
+  input wire  rack_up_mob_t3,
+  input wire  rack_down_t0_in,
+  input wire  rack_up_t0_in,
+  input wire  rack_down_t1_in,
+  input wire  rack_up_t1_in,
+  input wire  rack_down_t2_in,
+  input wire  rack_up_t2_in,
+  input wire  rack_down_t3_in,
+  input wire  rack_up_t3_in,
+  input wire  mib
   );
 
-   wire[2:0] count = {rack_write, rack_read, f9_pos};
-   /*  rack_write  rack_read  f9_pos  |
-    * --------------------------------+----------------------
-    *      0           1        0     | rack_up_out   (0001)
-    *      0           1        1     | rack_down_out (0010)
-    *      1           0        0     | rack_up_in    (0100)
-    *      1           0        1     | rack_down_in  (1000)
-    */
-   assign {rack_down_in, rack_up_in, rack_down_out, rack_up_out} = 4'b0001 << (count - 4'b0010);
+  wire[2:0] count = {rack_write, rack_read, f9_pos};
+  /*  rack_write  rack_read  f9_pos  |
+  * --------------------------------+----------------------
+  *      0           1        0     | rack_up_out   (0001)
+  *      0           1        1     | rack_down_out (0010)
+  *      1           0        0     | rack_up_in    (0100)
+  *      1           0        1     | rack_down_in  (1000)
+  */
+  assign {rack_down_in, rack_up_in, rack_down_out, rack_up_out} = 4'b0001 << (count - 4'b0010);
 
-   assign rack_mib = mib;
-   assign rack_mob = rack_down_mob_t0 |
-                     rack_up_mob_t0   |
-                     rack_down_mob_t1 |
-                     rack_up_mob_t1   |
-                     rack_down_mob_t2 |
-                     rack_up_mob_t2   |
-                     rack_down_mob_t3 |
-                     rack_up_mob_t3;
+  assign rack_mib = mib;
+  assign rack_mob = rack_down_mob_t0 |
+                    rack_up_mob_t0   |
+                    rack_down_mob_t1 |
+                    rack_up_mob_t1   |
+                    rack_down_mob_t2 |
+                    rack_up_mob_t2   |
+                    rack_down_mob_t3 |
+                    rack_up_mob_t3;
 
-   // Memory Tank in-gate inverting logic to inhibit recirculation.
-   assign rack_down_t0_clr = ~rack_down_t0_in;
-   assign rack_up_t0_clr   = ~rack_up_t0_in;
-   assign rack_down_t1_clr = ~rack_down_t1_in;
-   assign rack_up_t1_clr   = ~rack_up_t1_in;
-   assign rack_down_t2_clr = ~rack_down_t2_in;
-   assign rack_up_t2_clr   = ~rack_up_t2_in;
-   assign rack_down_t3_clr = ~rack_down_t3_in;
-   assign rack_up_t3_clr   = ~rack_up_t3_in;
+  // Memory Tank in-gate inverting logic to inhibit recirculation.
+  assign rack_down_t0_clr = ~rack_down_t0_in;
+  assign rack_up_t0_clr   = ~rack_up_t0_in;
+  assign rack_down_t1_clr = ~rack_down_t1_in;
+  assign rack_up_t1_clr   = ~rack_up_t1_in;
+  assign rack_down_t2_clr = ~rack_down_t2_in;
+  assign rack_up_t2_clr   = ~rack_up_t2_in;
+  assign rack_down_t3_clr = ~rack_down_t3_in;
+  assign rack_up_t3_clr   = ~rack_up_t3_in;
 
 endmodule
