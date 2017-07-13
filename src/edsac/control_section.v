@@ -395,11 +395,14 @@ module control_section (
   wire op_y;
   wire op_z;
 
+  /* Two most significant opcode bits are used to select 
+   * one of the four second-level Order Decoder Units.
+   */
   order_decoder1 order_decoder1 (
-    .o_dy_0          (o_dy_0),
-    .o_dy_1          (o_dy_1),
-    .o_dy_2          (o_dy_2),
-    .o_dy_3          (o_dy_3),
+    .o_dy_0          (o_dy_0), // 00
+    .o_dy_1          (o_dy_1), // 01
+    .o_dy_2          (o_dy_2), // 10
+    .o_dy_3          (o_dy_3), // 11
 
     .f16_pos         (f16_pos),
     .f16_neg         (f16_neg),
@@ -408,15 +411,19 @@ module control_section (
     .order_flash_rdy (order_flash_rdy)
     );
 
+  /* Each of the following four instances of Order Decoder 2 
+   * Unit (second level)uses the three least significant 
+   * bits of the opcode.
+   */
   order_decoder2 order_decoder2_0 (
-    .op1     (op_p),
-    .op2     (op_q),
-    .op3     (op_w),
-    .op4     (op_e),
-    .op5     (op_r),
-    .op6     (op_t),
-    .op7     (op_y),
-    .op8     (op_u),
+    .op1     (op_p),  // 00 000
+    .op2     (op_q),  // 00 001
+    .op3     (op_w),  // 00 010
+    .op4     (op_e),  // 00 011
+    .op5     (op_r),  // 00 100
+    .op6     (op_t),  // 00 101
+    .op7     (op_y),  // 00 110
+    .op8     (op_u),  // 00 111
 
     .f13_pos (f13_pos),
     .f13_neg (f13_neg),
@@ -428,14 +435,14 @@ module control_section (
     );
 
   order_decoder2 order_decoder2_1 (
-    .op1     (op_i),
-    .op2     (op_o),
-    .op3     (op_j),
-    .op4     (op_pi),
-    .op5     (op_s),
-    .op6     (op_z),
-    .op7     (op_k),
-    .op8     (op_erase),
+    .op1     (op_i),      // 01 000
+    .op2     (op_o),      // 01 001
+    .op3     (op_j),      // 01 010
+    .op4     (op_pi),     // 01 011
+    .op5     (op_s),      // 01 100
+    .op6     (op_z),      // 01 101
+    .op7     (op_k),      // 01 110
+    .op8     (op_erase),  // 01 111
 
     .f13_pos (f13_pos),
     .f13_neg (f13_neg),
@@ -447,14 +454,14 @@ module control_section (
     );
 
   order_decoder2 order_decoder2_2 (
-    .op1     (op_blank),
-    .op2     (op_f),
-    .op3     (op_theta),
-    .op4     (op_d),
-    .op5     (op_phi),
-    .op6     (op_h),
-    .op7     (op_n),
-    .op8     (op_m),
+    .op1     (op_blank),  // 10 000
+    .op2     (op_f),      // 10 001
+    .op3     (op_theta),  // 10 010
+    .op4     (op_d),      // 10 011
+    .op5     (op_phi),    // 10 100
+    .op6     (op_h),      // 10 101
+    .op7     (op_n),      // 10 110
+    .op8     (op_m),      // 10 111
 
     .f13_pos (f13_pos),
     .f13_neg (f13_neg),
@@ -466,14 +473,14 @@ module control_section (
     );
 
   order_decoder2 order_decoder2_3 (
-    .op1     (op_delta),
-    .op2     (op_l),
-    .op3     (op_x),
-    .op4     (op_g),
-    .op5     (op_a),
-    .op6     (op_b),
-    .op7     (op_c),
-    .op8     (op_v),
+    .op1     (op_delta),  // 11 000
+    .op2     (op_l),      // 11 001
+    .op3     (op_x),      // 11 010
+    .op4     (op_g),      // 11 011
+    .op5     (op_a),      // 11 100
+    .op6     (op_b),      // 11 101
+    .op7     (op_c),      // 11 110
+    .op8     (op_v),      // 11 111
 
     .f13_pos (f13_pos),
     .f13_neg (f13_neg),
