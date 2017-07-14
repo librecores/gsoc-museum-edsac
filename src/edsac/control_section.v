@@ -252,7 +252,6 @@ module control_section (
   wire r1_write;
   wire r2_read;
   wire r2_write;
-  wire c17a; // F, I, T, U, Starter order.
   wire cu_gate_pos;
   wire cu_gate_neg;
   wire f1_mob;
@@ -348,14 +347,10 @@ module control_section (
   wire ep;
   wire single_ep;
   wire stop_neg;
-  wire c17;
-  wire c26;
   wire stop_one_b;
   wire seventy_d35;
   wire da;
   wire dy;
-  wire c5;
-  wire c6;
   wire zero_d0;
   wire mob;
   wire o_dy_0;
@@ -394,6 +389,20 @@ module control_section (
   wire op_x;
   wire op_y;
   wire op_z;
+  wire c5;
+  wire c6;
+  wire c11;
+  wire c12;
+  wire c13;
+  wire c14;
+  wire c17;
+  wire c17a; // F, I, T, U, Starter order.
+  wire c20;
+  wire c22;
+  wire c24;
+  wire c26;
+  wire c27;
+  wire extended_neg;
 
   /* Two most significant opcode bits are used to select 
    * one of the four second-level Order Decoder Units.
@@ -489,6 +498,71 @@ module control_section (
     .f15_pos (f15_pos),
     .f15_neg (f15_neg),
     .o_dy    (o_dy_3)
+    );
+
+  order_coder order_coder (
+    .c1   (c1),
+    .c2   (c2),
+    .c3   (c3),
+    .c4   (c4),
+    .c5   (c5),
+    .c6   (c6),
+    .c7   (c7),
+    .c8   (c8),
+    .c9   (c9),
+    .c10  (c10),
+    .c11  (c11),
+    .c12  (c12),
+    .c13  (c13),
+    .c14  (c14),
+    .c16  (c16),
+    .c17  (c17),
+    .c17a (c17a),
+    .c18  (c18),
+    .c19  (c19),
+    .c20  (c20),
+    .c21  (c21),
+    .c22  (c22),
+    .c24  (c24),
+    .c25  (c25),
+    .c26  (c26),
+    .c27  (c27),
+
+    .op_a         (op_a),
+    .op_b         (op_b),
+    .op_blank     (op_blank),
+    .op_c         (op_c),
+    .op_d         (op_d),
+    .op_delta     (op_delta),
+    .op_e         (op_e),
+    .op_erase     (op_erase),
+    .op_f         (op_f),
+    .op_g         (op_g),
+    .op_h         (op_h),
+    .op_i         (op_i),
+    .op_j         (op_j),
+    .op_k         (op_k),
+    .op_l         (op_l),
+    .op_m         (op_m),
+    .op_n         (op_n),
+    .op_o         (op_o),
+    .op_p         (op_p),
+    .op_phi       (op_phi),
+    .op_pi        (op_pi),
+    .op_q         (op_q),
+    .op_r         (op_r),
+    .op_s         (op_s),
+    .op_t         (op_t),
+    .op_theta     (op_theta),
+    .op_u         (op_u),
+    .op_v         (op_v),
+    .op_w         (op_w),
+    .op_x         (op_x),
+    .op_y         (op_y),
+    .op_z         (op_z),
+    .starter      (starter),
+    .starter_neg  (starter_neg),
+    .extended_neg (extended_neg)
     );
 
   transfer transfer (
