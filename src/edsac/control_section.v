@@ -403,6 +403,27 @@ module control_section (
   wire c26;
   wire c27;
   wire extended_neg;
+  wire odd_d0;
+  wire odd_d35;
+  wire ev_d0;
+
+  ccu_1 ccu_1 (
+    .g1_pos   (g1_pos),
+    .g1_neg   (g1_neg),
+    .odd_d0   (odd_d0),
+    .odd_d35  (odd_d35),
+    .ev_d0    (ev_d0),
+    .ev_d1    (ev_d1),
+    .ev_d1_dz (ev_d1_dz),
+
+    .clk      (clk),
+    .d0       (d0),
+    .d1       (d1),
+    .d18      (d18),
+    .d35      (d35),
+    .da_n     (da_n),
+    .dy       (dy)
+    );
 
   /* Two most significant opcode bits are used to select 
    * one of the four second-level Order Decoder Units.
