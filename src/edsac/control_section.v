@@ -406,6 +406,7 @@ module control_section (
   wire odd_d0;
   wire odd_d35;
   wire ev_d0;
+  wire g8;
 
   ccu_1 ccu_1 (
     .g1_pos   (g1_pos),
@@ -423,6 +424,22 @@ module control_section (
     .d35      (d35),
     .da_n     (da_n),
     .dy       (dy)
+    );
+
+  ccu_2 ccu_2 (
+    .zero_d0  (zero_d0),
+    .g8       (g8),
+    .da_m     (da_m),
+    .ds       (ds),
+
+    .c7       (c7),
+    .d35      (d35),
+    .da       (da),
+    .ev_d0    (ev_d0),
+    .mcand_in (mcand_in),
+    .c5       (c5),
+    .c6       (c6),
+    .s2       (s2)
     );
 
   /* Two most significant opcode bits are used to select 
