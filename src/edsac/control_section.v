@@ -409,6 +409,7 @@ module control_section (
   wire g8;
   wire ep2;
   wire reset_shift_ff;
+  wire ep3;
 
   ccu_1 ccu_1 (
     .g1_pos   (g1_pos),
@@ -456,6 +457,18 @@ module control_section (
     .ev_d0 (ev_d0),
     .ev_d1 (ev_d1),
     .order (order)
+    );
+
+  ccu_4 ccu_4 (
+    .ep3 (ep3),
+    .g6_pos (g6_pos),
+
+    .clk (clk),
+    .c1 (c1),
+    .ev_d0 (ev_d0),
+    .odd_d0 (odd_d0),
+    .g8 (g8),
+    .r2 (r2)
     );
 
   /* Two most significant opcode bits are used to select 
