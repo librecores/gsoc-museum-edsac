@@ -412,6 +412,13 @@ module control_section (
   wire ep3;
   wire ep0;
   wire ones4;
+  wire ep1;
+  wire ep5;
+  wire ep6;
+  wire ep7;
+  wire ep11;
+  wire ones1;
+  wire ones2;
 
   ccu_1 ccu_1 (
     .g1_pos   (g1_pos),
@@ -487,6 +494,27 @@ module control_section (
     .extended_neg (extended_neg),
     .odd_d0       (odd_d0),
     .s2           (s2)
+    );
+
+  ccu_6 ccu_6 (
+    .ep       (ep),
+    .ccu_ones (ccu_ones),
+
+    .ep0      (ep0),
+    .ep1      (ep1),
+    .ep2      (ep2),
+    .ep3      (ep3),
+    .ep4      (ep4),
+    .ep5      (ep5),
+    .ep6      (ep6),
+    .ep7      (ep7),
+    .ep8      (ep8),
+    .ep9      (ep9),
+    .ep10     (ep10),
+    .ep11     (ep11),
+    .ones1    (ones1),
+    .ones2    (ones2),
+    .ones4    (ones4)
     );
 
   /* Two most significant opcode bits are used to select 
