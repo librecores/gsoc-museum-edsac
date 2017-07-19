@@ -517,6 +517,17 @@ module control_section (
     .ones4    (ones4)
     );
 
+  ccu_7 ccu_7 (
+    .g3_pos (g3_pos),
+    .ones1  (ones1),
+
+    .clk    (clk),
+    .dx_m   (dx_m),
+    .dy     (dy),
+    .da_n   (da_n),
+    .ev_d0  (ev_d0)
+    );
+
   /* Two most significant opcode bits are used to select 
    * one of the four second-level Order Decoder Units.
    */
