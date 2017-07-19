@@ -410,6 +410,8 @@ module control_section (
   wire ep2;
   wire reset_shift_ff;
   wire ep3;
+  wire ep0;
+  wire ones4;
 
   ccu_1 ccu_1 (
     .g1_pos   (g1_pos),
@@ -446,29 +448,45 @@ module control_section (
     );
 
   ccu_3 ccu_3 (
-    .ep2 (ep2),
-    .g5 (g5),
+    .ep2            (ep2),
+    .g5             (g5),
     .reset_shift_ff (reset_shift_ff),
 
-    .clk (clk),
-    .zero_d0 (zero_d0),
-    .c6 (c6),
-    .dy (dy),
-    .ev_d0 (ev_d0),
-    .ev_d1 (ev_d1),
-    .order (order)
+    .clk            (clk),
+    .zero_d0        (zero_d0),
+    .c6             (c6),
+    .dy             (dy),
+    .ev_d0          (ev_d0),
+    .ev_d1          (ev_d1),
+    .order          (order)
     );
 
   ccu_4 ccu_4 (
-    .ep3 (ep3),
+    .ep3    (ep3),
     .g6_pos (g6_pos),
 
-    .clk (clk),
-    .c1 (c1),
-    .ev_d0 (ev_d0),
+    .clk    (clk),
+    .c1     (c1),
+    .ev_d0  (ev_d0),
     .odd_d0 (odd_d0),
-    .g8 (g8),
-    .r2 (r2)
+    .g8     (g8),
+    .r2     (r2)
+    );
+
+  ccu_5 ccu_5 (
+    .ep0          (ep0),
+    .ones4        (ones4),
+
+    .clk          (clk),
+    .c9           (c9),
+    .c12          (c12),
+    .c13          (c13),
+    .d18          (d18),
+    .ep_done      (ep_done),
+    .ev_d0        (ev_d0),
+    .extended_neg (extended_neg),
+    .odd_d0       (odd_d0),
+    .s2           (s2)
     );
 
   /* Two most significant opcode bits are used to select 
