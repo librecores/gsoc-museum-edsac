@@ -528,6 +528,25 @@ module control_section (
     .ev_d0  (ev_d0)
     );
 
+  ccu_8 ccu_8 (
+    .ep1            (ep1),
+    .g4_pos         (g4_pos),
+    .g4_neg         (g4_neg),
+    .ones2          (ones2),
+
+    .seventy_d35    (seventy_d35),
+    .c11            (c11),
+    .c14            (c14),
+    .da             (da),
+    .ds_r           (ds_r),
+    .dy             (dy),
+    .ep_done        (ep_done),
+    .ev_d0          (ev_d0),
+    .odd_d35        (odd_d35),
+    .g5             (g5),
+    .reset_shift_ff (reset_shift_ff)
+    );
+
   /* Two most significant opcode bits are used to select 
    * one of the four second-level Order Decoder Units.
    */
