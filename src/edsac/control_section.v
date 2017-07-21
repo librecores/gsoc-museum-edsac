@@ -563,6 +563,23 @@ module control_section (
     .order_flash_rdy (order_flash_rdy)
     );
 
+  ccu_9_11 ccu_9_11 (
+    .ep6     (ep6),
+    .ep7     (ep7),
+    .g9_neg  (g9_neg),
+    .g10_neg (g10_neg),
+    .g11_neg (g11_neg),
+
+    .c18     (c18),
+    .c19     (c19),
+    .c20     (c20),
+    .ev_d0   (ev_d0),
+    .odd_d0  (odd_d0),
+    .r2      (r2),
+    .s2      (s2),
+    .op_u    (op_u)
+    );
+
   /* Each of the following four instances of Order Decoder 2 
    * Unit (second level)uses the three least significant 
    * bits of the opcode.
