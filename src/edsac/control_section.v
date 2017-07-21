@@ -419,6 +419,7 @@ module control_section (
   wire ep11;
   wire ones1;
   wire ones2;
+  wire extended_pos;
 
   ccu_1 ccu_1 (
     .g1_pos   (g1_pos),
@@ -578,6 +579,24 @@ module control_section (
     .r2      (r2),
     .s2      (s2),
     .op_u    (op_u)
+    );
+
+  ccu_10 ccu_10 (
+    .dv           (dv),
+    .ep5          (ep5),
+    .jump_uc      (jump_uc),
+    .stop_one_b   (stop_one_b),
+
+    .c10          (c10),
+    .c25          (c25),
+    .odd_d35      (odd_d35),
+    .dv_d         (dv_d),
+    .ep_done      (ep_done),
+    .ev_d0        (ev_d0),
+    .extended_pos (extended_pos),
+    .odd_d0       (odd_d0),
+    .op_j         (op_j),
+    .s2           (s2)
     );
 
   /* Each of the following four instances of Order Decoder 2 
