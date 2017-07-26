@@ -198,7 +198,21 @@ module edsac (
   wire        mob_tape;
   wire        mob_starter;
   wire        mob_printer;
-
+  wire        epsep;
+  wire        ep11;
+  wire        extended_pos;
+  wire        extended_neg;
+  wire        single_ep;
+  wire        start;
+  wire        stop_neg;
+  wire        c22;
+  wire        ep;
+  wire        sep2;
+  wire        resume_btn;
+  wire        single_ep_btn;
+  wire        start_btn;
+  wire        stop_btn;
+  wire        extended_btn;
 
   computer computer (
     .mcand_in (mcand_in),
@@ -635,6 +649,28 @@ module edsac (
     .r2_down_t2_out (r2_down_t2_out),
     .r2_down_t3_out (r2_down_t3_out),
     .clk            (clk)
+    );
+
+  contol_switches contol_switches (
+    .epsep         (epsep),
+    .ep11          (ep11),
+    .extended_pos  (extended_pos),
+    .extended_neg  (extended_neg),
+    .single_ep     (single_ep),
+    .start         (start),
+    .stop_neg      (stop_neg),
+    .s2            (s2),
+    .c22           (c22),
+    .d18           (d[18]),
+    .d35           (d[35]),
+    .ep            (ep),
+    .starter_neg   (starter_neg),
+    .sep2          (sep2),
+    .resume_btn    (resume_btn),
+    .single_ep_btn (single_ep_btn),
+    .start_btn     (start_btn),
+    .stop_btn      (stop_btn),
+    .extended_btn  (extended_btn)
     );
 
 endmodule
