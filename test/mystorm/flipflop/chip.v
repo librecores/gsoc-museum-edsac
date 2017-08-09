@@ -26,14 +26,15 @@ module chip (
 
     wire out, out_bar, set, reset;
     assign PMOD[55:52] = {{2{out}}, {2{out_bar}}};
-    assign set = BUT[0];
-    assign reset = BUT[1];
+    // myStorm board has negative button logic, i.e., BUT is LOW when pressed.
+    assign set = ~BUT[0];
+    assign reset = ~BUT[1];
 
     flipflop flipflop (
         .out     (out),
         .out_bar (out_bar),
-        .set     (set),
-        .reset   (reset)
+        .set     (set), // Positive edge triggered.
+        .reset   (reset) // Positive edge triggered.
     );
 
 endmodule
