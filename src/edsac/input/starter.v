@@ -12,6 +12,7 @@ module starter (
   output wire starter_neg,
   output wire stop_one_d,
 
+  input wire  initial_orders, // Serial input of initial orders.
   input wire  s2,
   input wire  start,
   input wire  d17,

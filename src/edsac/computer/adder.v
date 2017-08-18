@@ -3,42 +3,42 @@
  * which is ignored here for now.
  */
 
-module adder
-  (output wire sum,
+module adder (
+  output wire sum,
 
-   input wire  clk,
-   input wire  a,
-   input wire  b
+  input wire  clk,
+  input wire  a,
+  input wire  b
   );
 
-   wire sum0;
-   wire sumi;
-   wire carry0_d;
-   wire carry_d;
-   wire c;
+  wire sum0;
+  wire sumi;
+  wire carry0_d;
+  wire carry_d;
+  wire c;
 
-   half_adder ha0
-     (.sum       (sum0),
-      .del_carry (carry0_d),
-      .clk       (clk),
-      .a         (a),
-      .b         (b)
-     );
+  half_adder ha0 (
+    .sum       (sum0),
+    .del_carry (carry0_d),
+    .clk       (clk),
+    .a         (a),
+    .b         (b)
+    );
 
-   half_adder ha1
-     (.sum       (sumi),
-      .del_carry (carry_d),
-      .clk       (clk),
-      .a         (sum0),
-      .b         (c)
-     );
+  half_adder ha1 (
+    .sum       (sumi),
+    .del_carry (carry_d),
+    .clk       (clk),
+    .a         (sum0),
+    .b         (c)
+    );
 
-   assign c = carry0_d | carry_d;
+  assign c = carry0_d | carry_d;
 
-   delay #(.INTERVAL(2)) dl
-     (.out (sum),
-      .clk (clk),
-      .in  (sumi)
-     );
+  delay #(.INTERVAL(2)) dl (
+    .out (sum),
+    .clk (clk),
+    .in  (sumi)
+    );
 
 endmodule

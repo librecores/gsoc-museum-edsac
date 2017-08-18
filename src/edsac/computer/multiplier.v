@@ -19,56 +19,58 @@
  * response tested in CCU 7).
  */
 
-module multiplier
-  (output wire mpier,
-   output wire dx_m, // Response to digit test pulse (dx), signalled when corresponding bit is 1.
-   output wire ep4, // End pulse.
+module multiplier (
+  output wire mpier,
+  output wire dx_m, // Response to digit test pulse (dx), signalled when corresponding bit is 1.
+  output wire ep4, // End pulse.
 
-   input wire  clk,
-   input wire  c18, // H order, transfer number from memory into Multiplier.
-   input wire  mib,
-   input wire  g10_neg, // Inverse Multiplier clear gate.
-   input wire  dx, // Digit test pulse for Multiplier.
-   input wire  d0, // On receipt of r2, next d0 is gated as ep4.
-   input wire  r2 // Stimulating pulse received from MCU, indicates completion of loading. 
+  input wire  clk,
+  input wire  c18, // H order, transfer number from memory into Multiplier.
+  input wire  mib,
+  input wire  g10_neg, // Inverse Multiplier clear gate.
+  input wire  dx, // Digit test pulse for Multiplier.
+  input wire  d0, // On receipt of r2, next d0 is gated as ep4.
+  input wire  r2 // Stimulating pulse received from MCU, indicates completion of loading. 
   );
 
-   wire r2i;
-   wire r2o;
-   wire ff_out;
-   wire ff_res;
+  wire r2i;
+  wire r2o;
+  wire ff_out;
+  wire ff_res;
 
-   // Loading and reading logic.
-   delay_line #(.STORE_LEN(1), .WORD_WIDTH(36)) mpier_store
-     (.monitor      (), // Unconnected.
-      .data_out     (mpier),
-      .clk          (clk),
-      .data_in      (mib),
-      .data_in_gate (c18),
-      .data_clr     (g10_neg)
-     );
+  // Loading and reading logic.
+  delay_line #(.STORE_LEN(1), .WORD_WIDTH(36)) mpier_store (
+    .monitor      (), // Unconnected.
+    .data_out     (mpier),
+    .clk          (clk),
+    .data_in      (mib),
+    .data_in_gate (c18),
+    .data_clr     (g10_neg)
+    );
 
-   // End pulse (ep4) generating logic.
-   assign r2i = r2 & c18;
-   delay #(.INTERVAL(1)) r2_dl
-     (.out (r2o),
-      .clk (clk),
-      .in  (r2i)
-     );
-   flipflop ff
-     (.out     (ff_out),
-      .out_bar (), // Unconnected.
-      .set     (r2o),
-      .reset   (ff_res)
-     );
-   assign ep4 = d0 & ff_out;
-   delay #(.INTERVAL(1)) ff_res_dl
-     (.out (ff_res),
-      .clk (clk),
-      .in  (ep4)
-     );
+  // End pulse (ep4) generating logic.
+  assign r2i = r2 & c18;
+  delay #(.INTERVAL(1)) r2_dl (
+    .out (r2o),
+    .clk (clk),
+    .in  (r2i)
+    );
+  flipflop ff (
+    .out     (ff_out),
+    .out_bar (), // Unconnected.
+    .set     (r2o),
+    .reset   (ff_res)
+    );
 
-   // Testing bits.
-   assign dx_m = dx & mpier;
+  assign ep4 = d0 & ff_out;
+
+  delay #(.INTERVAL(1)) ff_res_dl (
+    .out (ff_res),
+    .clk (clk),
+    .in  (ep4)
+    );
+
+  // Testing bits.
+  assign dx_m = dx & mpier;
 
 endmodule
