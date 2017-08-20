@@ -6,7 +6,16 @@
   output wire        RAMWE,
   output wire        RAMCS,
   // All PMOD outputs
+  // {PMOD[16], PMOD[11:8]} reused for Control Switches.
   output wire [55:0] PMOD,
+
+  // Assign external buttons for Control Switches module.
+  // Using GPIO PMOD 3 and 5 with push buttons.
+  input wire         resume_btn, // PMOD[8]
+  input wire         single_ep_btn, // PMOD[9]
+  input wire         start_btn, // PMOD[10]
+  input wire         stop_btn, // PMOD[11]
+  input wire         extended_btn, // PMOD[16]
 
   // myStorm board has negative button logic, i.e., BUT is LOW when pressed.
   input wire [1:0]   BUT,
@@ -38,7 +47,12 @@
   end
 
   edsac edsac (
-    .clk (clk_edsac)
+    .clk           (clk_edsac),
+    .resume_btn    (resume_btn),
+    .single_ep_btn (single_ep_btn),
+    .start_btn     (start_btn),
+    .stop_btn      (stop_btn),
+    .extended_btn  (extended_btn)
     );
 
 endmodule

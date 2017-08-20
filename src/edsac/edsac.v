@@ -2,7 +2,12 @@
  */
 
 module edsac (
-  input wire clk
+  input wire clk,
+  input wire resume_btn,
+  input wire single_ep_btn,
+  input wire start_btn,
+  input wire stop_btn,
+  input wire extended_btn
   );
 
   wire        f1_down_mob_t0;
@@ -208,11 +213,6 @@ module edsac (
   wire        c22;
   wire        ep;
   wire        sep2;
-  wire        resume_btn;
-  wire        single_ep_btn;
-  wire        start_btn;
-  wire        stop_btn;
-  wire        extended_btn;
 
   computer computer (
     .mcand_in (mcand_in),
