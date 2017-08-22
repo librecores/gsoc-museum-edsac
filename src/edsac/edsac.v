@@ -3,11 +3,31 @@
 
 module edsac (
   input wire clk,
+  // Push buttons.
   input wire resume_btn,
   input wire single_ep_btn,
   input wire start_btn,
   input wire stop_btn,
-  input wire extended_btn
+  input wire extended_btn,
+  // Toggle buttons.
+  input wire o1_t_btn,
+  input wire o2_t_btn,
+  input wire o3_t_btn,
+  input wire o4_t_btn,
+  input wire o5_t_btn,
+  input wire o6_t_btn,
+  input wire o7_t_btn,
+  input wire o8_t_btn,
+  input wire o9_t_btn,
+  input wire o10_t_btn,
+  input wire o11_t_btn,
+  input wire o12_t_btn,
+  input wire o13_t_btn,
+  input wire o14_t_btn,
+  input wire o15_t_btn,
+  input wire o16_t_btn,
+  input wire o17_t_btn,
+  input wire eng_mode_t_btn
   );
 
   wire        f1_down_mob_t0;
@@ -309,6 +329,10 @@ module edsac (
     .d18            (d[18]),
     .d19            (d[19]),
     .d20            (d[20]),
+    .d21            (d[21]),
+    .d22            (d[22]),
+    .d23            (d[23]),
+    .d24            (d[24]),
     .d25            (d[25]),
     .d26            (d[26]),
     .d27            (d[27]),
@@ -472,7 +496,25 @@ module edsac (
     .mob_asu1       (mob_asu1),
     .mob_tape       (mob_tape),
     .mob_starter    (mob_starter),
-    .mob_printer    (mob_printer)
+    .mob_printer    (mob_printer),
+    .o1_t_btn       (o1_t_btn),
+    .o2_t_btn       (o2_t_btn),
+    .o3_t_btn       (o3_t_btn),
+    .o4_t_btn       (o4_t_btn),
+    .o5_t_btn       (o5_t_btn),
+    .o6_t_btn       (o6_t_btn),
+    .o7_t_btn       (o7_t_btn),
+    .o8_t_btn       (o8_t_btn),
+    .o9_t_btn       (o9_t_btn),
+    .o10_t_btn      (o10_t_btn),
+    .o11_t_btn      (o11_t_btn),
+    .o12_t_btn      (o12_t_btn),
+    .o13_t_btn      (o13_t_btn),
+    .o14_t_btn      (o14_t_btn),
+    .o15_t_btn      (o15_t_btn),
+    .o16_t_btn      (o16_t_btn),
+    .o17_t_btn      (o17_t_btn),
+    .eng_mode_t_btn (eng_mode_t_btn)
     );
 
   digit_pulse_generator digit_pulse_generator (
