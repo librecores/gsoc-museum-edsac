@@ -46,32 +46,32 @@ set_io PMOD[18] 112 #c9
 set_io PMOD[19] 107 #c7
 
 #pmod 6 GPIO
-set_io PMOD[20] 144 #G1
-set_io PMOD[21] 113 #C10
-set_io PMOD[22] 110 #C8
-set_io PMOD[23] 106 #C6
+set_io o1_t_btn 144 #G1
+set_io o2_t_btn 113 #C10
+set_io o3_t_btn 110 #C8
+set_io o4_t_btn 106 #C6
 
 #pmod 7 lvds pairs 2 & 5
-set_io PMOD[24] 10 # 5b
-set_io PMOD[25] 9 # 5a
-set_io PMOD[26] 2 # 2b
-set_io PMOD[27] 1 # 2a
+set_io o5_t_btn 10 # 5b
+set_io o6_t_btn 9 # 5a
+set_io o7_t_btn 2 # 2b
+set_io o8_t_btn 1 # 2a
 
 #pmod 8 lvds pairs 3 & 4
-set_io PMOD[28] 8 # 4b
-set_io PMOD[29] 7 # 4a
-set_io PMOD[30] 4 # 3b
-set_io PMOD[31] 3 # 3a
+set_io o9_t_btn 8 # 4b
+set_io o10_t_btn 7 # 4a
+set_io o11_t_btn 4 # 3b
+set_io o12_t_btn 3 # 3a
 
 #pmod 9 lvds pairs 10 & 13
-set_io PMOD[32] 20 # 13b
-set_io PMOD[33] 19 # 13a
-set_io PMOD[34] 16 # 10b
-set_io PMOD[35] 15 # 10a
+set_io o13_t_btn 20 # 13b
+set_io o14_t_btn 19 # 13a
+set_io o15_t_btn 16 # 10b
+set_io o16_t_btn 15 # 10a
 
 #pmod 10 lvds pairs 8 & 12
-set_io PMOD[36] 18 # 12b
-set_io PMOD[37] 17 # 12a
+set_io o17_t_btn 18 # 12b
+set_io eng_mode_t_btn 17 # 12a
 set_io PMOD[38] 12 # 8b
 set_io PMOD[39] 11 # 8a
 
