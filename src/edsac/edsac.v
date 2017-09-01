@@ -338,6 +338,7 @@ module edsac (
     .d27            (d[27]),
     .d28            (d[28]),
     .d29            (d[29]),
+    .d30            (d[30]),
     .d31            (d[31]),
     .d32            (d[32]),
     .d33            (d[33]),
@@ -519,7 +520,7 @@ module edsac (
 
   digit_pulse_generator digit_pulse_generator (
     .digit_pulse (d[35:0]),
-    
+
     .clk (clk)
     );
 

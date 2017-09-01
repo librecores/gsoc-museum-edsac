@@ -40,7 +40,7 @@ module control_section (
 
   input wire  mcand_in,
   input wire  da_n, // From Multiplicand.
-  input wire  ds_r, // Sign bit propagation for right shifts, produced 
+  input wire  ds_r, // Sign bit propagation for right shifts, produced
                     // in Accumulator in response to ds (coming from CCU 2).
   input wire  ep4, // From the Multiplier.
   input wire  dx_m, // Response to digit test pulse (dx), signalled when corresponding bit is 1.
@@ -66,6 +66,7 @@ module control_section (
   input wire  d27,
   input wire  d28,
   input wire  d29,
+  input wire  d30,
   input wire  d31,
   input wire  d32,
   input wire  d33,
@@ -572,7 +573,7 @@ module control_section (
     .reset_shift_ff (reset_shift_ff)
     );
 
-  /* Two most significant opcode bits are used to select 
+  /* Two most significant opcode bits are used to select
    * one of the four second-level Order Decoder Units.
    */
   order_decoder1 order_decoder1 (
@@ -623,8 +624,8 @@ module control_section (
     .s2           (s2)
     );
 
-  /* Each of the following four instances of Order Decoder 2 
-   * Unit (second level)uses the three least significant 
+  /* Each of the following four instances of Order Decoder 2
+   * Unit (second level)uses the three least significant
    * bits of the opcode.
    */
   order_decoder2 order_decoder2_0 (
@@ -774,7 +775,7 @@ module control_section (
     .mob         (mib),
     .clk         (clk),
     .f1_pos      (f1_pos),
-    .f2_pos      (f2_pos), 
+    .f2_pos      (f2_pos),
     .mob_asu1    (mob_asu1),
     .mob_tape    (mob_tape),
     .mob_starter (mob_starter),
@@ -822,8 +823,8 @@ module control_section (
     .order_sct (order_sct)
     );
 
-/* This is the first stage of Tank decoding to determine rack to be 
- * selected - F1, F2, R1 or R2. Additional control signal determine 
+/* This is the first stage of Tank decoding to determine rack to be
+ * selected - F1, F2, R1 or R2. Additional control signal determine
  * access type - read or write.
  */
   tank_decoder0 tank_decoder0 (

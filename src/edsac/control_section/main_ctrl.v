@@ -1,6 +1,6 @@
-/* TODO: There is a very small RC delay (0.08 us) just before a reversed EP resets 
-         a flipflop that _should_ permit an EP to pass to SCT as sct_one to increment 
-         SCT. Was this necessary? General behaviour of incrementing SCT not 
+/* TODO: There is a very small RC delay (0.08 us) just before a reversed EP resets
+         a flipflop that _should_ permit an EP to pass to SCT as sct_one to increment
+         SCT. Was this necessary? General behaviour of incrementing SCT not
          understood clearly yet.
  */
 
@@ -46,6 +46,8 @@ module main_ctrl (
   wire handoff; // Resets g12 and sets g13, causes instant switch from Stage 1 to Stage 2.
   wire ff_s1_set;
   wire ff_sctone_out;
+
+  wire ff_sct_reset; //Added by Dan
 
 
   assign g12_set = (stop_neg & ep) | single_ep;

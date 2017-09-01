@@ -1,11 +1,11 @@
 /* Top module for Memory L1 subsystem.
  *
- * The EDSAC had 32 memory tanks, each designed to hold 
- * 16 full words (36 bits, 72 us delay). It took 1.152 ms for 
- * one complete circulation. Thus 512 full words (576 bits) 
- * could be stored in all. Later in EDSAC's lifetime, the capacity 
+ * The EDSAC had 32 memory tanks, each designed to hold
+ * 16 full words (36 bits, 72 us delay). It took 1.152 ms for
+ * one complete circulation. Thus 512 full words (576 bits)
+ * could be stored in all. Later in EDSAC's lifetime, the capacity
  * was doubled to 1024 full words.
- * 
+ *
  * The 32 tanks are distributed across 4 racks -
  *     - rack F1, 8 tanks = 4 up + 4 down
  *     - rack F2, 8 tanks = 4 up + 4 down

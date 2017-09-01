@@ -34,16 +34,16 @@ set_io start_btn 99 # c1
 set_io stop_btn 97 # i_tx
 
 #pmod 4
-set_io PMOD[12] 104 # c4
-set_io PMOD[13] 101 # c2
-set_io PMOD[14] 98 # c0
-set_io PMOD[15] 96 # i_rx
+set_io PMOD[8] 104 # c4
+set_io PMOD[9] 101 # c2
+set_io PMOD[10] 98 # c0
+set_io PMOD[11] 96 # i_rx
 
 #pmod 5 GPIO
 set_io extended_btn 143 #g2
-set_io PMOD[17] 114 #c11
-set_io PMOD[18] 112 #c9
-set_io PMOD[19] 107 #c7
+set_io PMOD[12] 114 #c11
+set_io PMOD[13] 112 #c9
+set_io PMOD[14] 107 #c7
 
 #pmod 6 GPIO
 set_io o1_t_btn 144 #G1
@@ -72,32 +72,32 @@ set_io o16_t_btn 15 # 10a
 #pmod 10 lvds pairs 8 & 12
 set_io o17_t_btn 18 # 12b
 set_io eng_mode_t_btn 17 # 12a
-set_io PMOD[38] 12 # 8b
-set_io PMOD[39] 11 # 8a
+set_io PMOD[15] 12 # 8b
+set_io PMOD[16] 11 # 8a
 
 #pmod 11 lvds pairs 14 & 25
-set_io PMOD[40] 34 # 25b
-set_io PMOD[41] 33 # 25a
-set_io PMOD[42] 22 # 14B
-set_io PMOD[43] 21 # 14a
+set_io PMOD[17] 34 # 25b
+set_io PMOD[18] 33 # 25a
+set_io PMOD[19] 22 # 14B
+set_io PMOD[20] 21 # 14a
 
 #pmod 12 lvds pairs 18 & 24
-set_io PMOD[44] 32 # 24b
-set_io PMOD[45] 31 # 24a
-set_io PMOD[46] 26 # 18b
-set_io PMOD[47] 25 # 18a
+set_io PMOD[21] 32 # 24b
+set_io PMOD[22] 31 # 24a
+set_io PMOD[23] 26 # 18b
+set_io PMOD[24] 25 # 18a
 
 #pmod 13 lvds pairs 17 & 23
-set_io PMOD[48] 29 # 23b
-set_io PMOD[49] 28 # 23a
-set_io PMOD[50] 24 # 17b
-set_io PMOD[51] 23 # 17a
+set_io PMOD[25] 29 # 23b
+set_io PMOD[26] 28 # 23a
+set_io PMOD[27] 24 # 17b
+set_io PMOD[28] 23 # 17a
 
 #pmod 14 SPI muxed with leds
-set_io PMOD[52] 71 #LD4,!SS,p14_1
-set_io PMOD[53] 67 #LD3,MISO,p14_2
-set_io PMOD[54] 68 #LD2,MOSI,p14_3
-set_io PMOD[55] 70 #LD1,SCL,p14_4
+set_io PMOD[29] 71 #LD4,!SS,p14_1
+set_io PMOD[30] 67 #LD3,MISO,p14_2
+set_io PMOD[31] 68 #LD2,MOSI,p14_3
+set_io PMOD[32] 70 #LD1,SCL,p14_4
 
 # SRAM
 set_io ADR[0] 137

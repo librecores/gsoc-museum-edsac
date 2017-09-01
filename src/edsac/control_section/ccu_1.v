@@ -1,6 +1,6 @@
 /* CCU 1 is essentially a timing pulse generator.
- * Since Accumulator is double length, minor cycles 
- * are designated odd or even. Arithmetic operations 
+ * Since Accumulator is double length, minor cycles
+ * are designated odd or even. Arithmetic operations
  * begin on even cycles.
  */
 
@@ -26,7 +26,7 @@ module ccu_1 (
   wire even;
   wire dl_pos_out;
   wire dl_neg_out;
-  wire dl_da_n;
+  wire dl_da_dn;
 
   flipflop ff (
     .out     (g1_pos),

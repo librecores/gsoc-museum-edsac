@@ -1,29 +1,29 @@
-/* Coincidence Unit is responsible for selecting the position 
- * of a particular word (short or long) within the 16 minor cycles 
- * in circulation in a Memory Tank. CU needs to be engaged in both 
- * the Stage 1 to fetch the order from memory, and in Stage 2 to fetch 
+/* Coincidence Unit is responsible for selecting the position
+ * of a particular word (short or long) within the 16 minor cycles
+ * in circulation in a Memory Tank. CU needs to be engaged in both
+ * the Stage 1 to fetch the order from memory, and in Stage 2 to fetch
  * data from the memory, if need be.
- * 
- * TOOD: Timing of the coincidence signal (as defined below) is unclear. 
- *       How does it interact with d0, d18, d17, d35? The report says 
- *       that once CU detects coincidence (as defined in report), 
+ *
+ * TOOD: Timing of the coincidence signal (as defined below) is unclear.
+ *       How does it interact with d0, d18, d17, d35? The report says
+ *       that once CU detects coincidence (as defined in report),
  *       the _following_ half/full cycle is treated as the desired data.
- * 
- * TODO: 1 p.i. delay has been introduced between the d0/d18 pulse and 
- *       its actual arrival at the ff_cu_comp. Theoretical timing diagrams 
+ *
+ * TODO: 1 p.i. delay has been introduced between the d0/d18 pulse and
+ *       its actual arrival at the ff_cu_comp. Theoretical timing diagrams
  *       indicate this is fine, but need to validate.
- * 
- * TODO: The exact length by which to delay the coincidence signal (as defined 
+ *
+ * TODO: The exact length by which to delay the coincidence signal (as defined
  *       below) before it moves on to trigger the r_pulse is unclear.
  */
 
 module coincidence (
   output wire cu_gate_pos,
   output wire cu_gate_neg,
-  output wire order_sct, // To Tank Number Flashing Unit. Order is gated 
+  output wire order_sct, // To Tank Number Flashing Unit. Order is gated
                         // by g13 and SCT by g12 in their respective units.
-  output wire r_pulse, // To MCU to signal end of Stage 1 and start of Stage 2. 
-                      // Indicates instruction has been transferred into 
+  output wire r_pulse, // To MCU to signal end of Stage 1 and start of Stage 2.
+                      // Indicates instruction has been transferred into
                       // the Order Tank.
 
   input wire  clk,
@@ -52,6 +52,10 @@ module coincidence (
   wire dl_cgr_out;
   wire ff_cu_gate_reset;
 
+  wire dl_stim_out; // Added by Dan
+  wire ff_cc_set;   // 
+  wire dl_rp_out;   //
+
   delay #(.INTERVAL(1)) dl_stim (
     .out (dl_stim_out),
     .clk (clk),
@@ -72,7 +76,7 @@ module coincidence (
     );
 
 
-  // Logic to gate coincidence for duration starting 
+  // Logic to gate coincidence for duration starting
   // from d2 (d20) upto and excluding d7 (d25) pulse occurrence.
   assign cu_window_set   = d2 | d20;
   assign cu_window_reset = d7 | d25;

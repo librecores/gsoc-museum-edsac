@@ -1,8 +1,8 @@
 /* CCU 2 facilitates multiplication and shifting operations.
  *
- * TODO: The original report says zero_d0 is delayed by 1 M/C - 1 p.i. before 
- *       it gates d35. The length of delay is unclear and its impact 
- *       is not understood. Logic diagrams say it could be avoided if flipflop's 
+ * TODO: The original report says zero_d0 is delayed by 1 M/C - 1 p.i. before
+ *       it gates d35. The length of delay is unclear and its impact
+ *       is not understood. Logic diagrams say it could be avoided if flipflop's
  *       output is taken.
  */
 
@@ -19,7 +19,9 @@ module ccu_2 (
   input wire  mcand_in,
   input wire  c5,
   input wire  c6,
-  input wire  s2
+  input wire  s2,
+
+  input wire clk
   );
 
   wire stim;

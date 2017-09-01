@@ -1,11 +1,11 @@
-/* CCU 9 and 11 are responsible for generating gating EMFs that 
+/* CCU 9 and 11 are responsible for generating gating EMFs that
  * clear tanks - Multiplicand, Accumulator and Multiplier.
- * 
- * TODO: Original report says that the two flipflops (refer code below) 
+ *
+ * TODO: Original report says that the two flipflops (refer code below)
  *       are reset by next ev_d0, but logic diagram uses ev_d1.
- * 
- * TODO: There is a slight delay before feeding odd_d0 into the gate 
- *       that sets ff_clr (refer code below). This seems to be mostly 
+ *
+ * TODO: There is a slight delay before feeding odd_d0 into the gate
+ *       that sets ff_clr (refer code below). This seems to be mostly
  *       unnecessary here, but need to validate.
  */
 module ccu_9_11 (
@@ -16,19 +16,22 @@ module ccu_9_11 (
   output wire g11_neg, // Multiplicand clear gate.
 
   input wire  c18, // H order - transfer from memory to Multiplier.
-  input wire  c19, // T, U orders - transfer from Accumulator to memory 
+  input wire  c19, // T, U orders - transfer from Accumulator to memory
                   // position with/without (T/U) clearing.
   input wire  c20, // T order - transfer from Accumulator to memory and clear.
   input wire  ev_d0,
   input wire  odd_d0,
   input wire  r2, // Coincidence detected to Computer, from MCU.
   input wire  s2, // Stimulating pulse to Computer.
-  input wire  op_u // U order, transfer from Accumulator without clearing.
+  input wire  op_u, // U order, transfer from Accumulator without clearing.
+
+  input wire  clk
   );
 
   wire ff_ep7_set;
   wire ff_ep7_out;
   wire ff_clr_set;
+  wire ff_clr_out; //Added by Dan
   wire g9neg_del;
   wire opu_del;
   wire fep7o_del;

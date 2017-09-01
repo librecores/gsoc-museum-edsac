@@ -6,9 +6,17 @@
   output wire        RAMWE,
   output wire        RAMCS,
   // All PMOD outputs
-  // {PMOD[37:20], PMOD[16], PMOD[11:8]} reused for Control 
+  // {PMOD[37:20], PMOD[16], PMOD[11:8]} reused for Control
   // Switches and Engineer's Control Panel buttons.
-  output wire [55:0] PMOD,
+
+//  output wire [55:0] PMOD,
+/*  output wire [07:00] PMOD,
+  output wire [15:12] PMOD,
+  output wire [19:17] PMOD,
+  output wire [55:38] PMOD,
+*/
+  output wire [32:00] PMOD,
+
 
   // Assign external buttons for Control Switches module.
   // Using GPIO PMODs 3 and 5 with push buttons.
@@ -20,6 +28,7 @@
 
   // Assign external toggle buttons for Engineer's Control Panel module.
   // Using PMODs 6, 7, 8, 9 and 10 with toggle buttons.
+
   input wire         o1_t_btn,
   input wire         o2_t_btn,
   input wire         o3_t_btn,
@@ -54,7 +63,7 @@
 
   // Set unused pmod pins to default
   // PMOD[55] is LED1 on board, PMOD[54] is LED2, and so on.
-  assign PMOD[55:0] = {56{1'bz}};
+//  assign PMOD[55:0] = {56{1'bz}};
 
   // EDSAC ran at a clock of 500KHz.
   reg [7:0] count = 0;

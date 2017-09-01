@@ -1,6 +1,6 @@
-/* Complementer/Collater/Distribution Unit III is a composite unit that serves 
- * multiple purposes - complementing numbers from the multiplicand, collate 
- * numbers and introduce delay when necessary to bring in numbers in step 
+/* Complementer/Collater/Distribution Unit III is a composite unit that serves
+ * multiple purposes - complementing numbers from the multiplicand, collate
+ * numbers and introduce delay when necessary to bring in numbers in step
  * with those from ASU as they go into the Adder.
  */
 module compl_collater (
@@ -13,7 +13,7 @@ module compl_collater (
   input wire c7, // R order - right shift.
   input wire c9, // X, Y orders.
   input wire ccu_ones, // Sign insertion/propagation pulses.
-  input wire ev_d1_dz, // Logic diagram describes as, "early 
+  input wire ev_d1_dz, // Logic diagram describes as, "early
                       // d1 during even cycles to stop inserting ones".
   input wire g4_pos, // Complementer gate.
   input wire g4_neg, // Inverse complementer gate.
@@ -26,6 +26,7 @@ module compl_collater (
   wire ff_out_bar;
   wire mcand_del; // Multiplicand input delayed by 1 p.i.
   wire comp_in;
+  wire comp_out;
   wire coll_out;
   wire add_out;
   wire misc_out;
@@ -49,8 +50,8 @@ module compl_collater (
     .reset   (ev_d1_dz)
     );
 
-  assign comp_out = ~comp_in & ff_out; // TODO: Logic diagram shows clk as the third 
-                                       // input signal, probably to reshape waveform. 
+  assign comp_out = ~comp_in & ff_out; // TODO: Logic diagram shows clk as the third
+                                       // input signal, probably to reshape waveform.
                                        // That is NOT implemented here.
 
   // COLLATION BLOCK

@@ -1,10 +1,10 @@
 /* CCU 10 is concerned with handling jump instructions.
- * 
- * TODO: Original report had separate bits of logic 
- *       to handle two conditional jumps. Logic diagram 
- *       shows modifications to it to handle both instructions 
- *       by modifying Accumulator logic. Need to verify the 
- *       modified designed for correctness. The logic diagram's 
+ *
+ * TODO: Original report had separate bits of logic
+ *       to handle two conditional jumps. Logic diagram
+ *       shows modifications to it to handle both instructions
+ *       by modifying Accumulator logic. Need to verify the
+ *       modified designed for correctness. The logic diagram's
  *       version is implemented below.
  */
 
@@ -23,7 +23,9 @@ module ccu_10 (
   input wire  extended_pos, // TODO: Use of extended_pos NOT clear.
   input wire  odd_d0,
   input wire  op_j,
-  input wire  s2 // Stimulating pulse to Computer from MCU.
+  input wire  s2, // Stimulating pulse to Computer from MCU.
+
+  input wire clk
   );
 
   wire fdv_out;
