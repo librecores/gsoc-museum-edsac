@@ -1,4 +1,4 @@
-/* Logic diagram for module not available 
+/* Logic diagram for module not available
  * in original report by Wilkes.
  */
 
@@ -89,7 +89,7 @@ module order_coder
    assign c19  = op_t | op_u;
    assign c20  = op_t;
    assign c21  = op_o;
-   assign c22  = op_pi | op_k | op_erase | op_blank | op_op_theta | op_d | op_phi | op_m | op_delta | op_b | op_z | op_q | op_w | (op_j & extended_neg) | (starter_neg & op_p);
+   assign c22  = op_pi | op_k | op_erase | op_blank | op_theta | op_d | op_phi | op_m | op_delta | op_b | op_z | op_q | op_w | (op_j & extended_neg) | (starter_neg & op_p);
    assign c24  = op_h | op_c;
    assign c25  = op_e;
    assign c26  = op_h | op_a | op_s | op_c | op_v | op_n;
