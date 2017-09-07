@@ -19,7 +19,8 @@ module ccu_2 (
   input wire  mcand_in,
   input wire  c5,
   input wire  c6,
-  input wire  s2
+  input wire  s2,
+  input       clk
   );
 
   wire stim;

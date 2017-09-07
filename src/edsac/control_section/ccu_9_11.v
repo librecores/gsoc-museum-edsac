@@ -23,12 +23,14 @@ module ccu_9_11 (
   input wire  odd_d0,
   input wire  r2, // Coincidence detected to Computer, from MCU.
   input wire  s2, // Stimulating pulse to Computer.
-  input wire  op_u // U order, transfer from Accumulator without clearing.
+  input wire  op_u, // U order, transfer from Accumulator without clearing.
+  input wire  clk
   );
 
   wire ff_ep7_set;
   wire ff_ep7_out;
   wire ff_clr_set;
+  wire ff_clr_out;
   wire g9neg_del;
   wire opu_del;
   wire fep7o_del;

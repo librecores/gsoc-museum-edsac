@@ -23,7 +23,8 @@ module ccu_10 (
   input wire  extended_pos, // TODO: Use of extended_pos NOT clear.
   input wire  odd_d0,
   input wire  op_j,
-  input wire  s2 // Stimulating pulse to Computer from MCU.
+  input wire  s2, // Stimulating pulse to Computer from MCU.
+  input       clk
   );
 
   wire fdv_out;

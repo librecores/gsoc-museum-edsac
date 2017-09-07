@@ -44,6 +44,9 @@ module ccu_1 (
     .clk (clk),
     .in  (g1_neg)
     );
+
+  wire dl_da_dn;
+
   assign even = dl_pos_out & d0;
   assign odd  = dl_neg_out & d0;
 

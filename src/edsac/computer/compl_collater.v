@@ -27,6 +27,7 @@ module compl_collater (
   wire mcand_del; // Multiplicand input delayed by 1 p.i.
   wire comp_in;
   wire coll_out;
+  wire comp_out;	// TODO: Not currently used.
   wire add_out;
   wire misc_out;
   wire fin_del_in;

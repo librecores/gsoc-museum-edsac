@@ -37,6 +37,7 @@ module contol_switches (
   wire ff1_outbar;
   wire ff2_out;
   wire ff3_out;
+  wire dl_out;
 
   assign single_ep = resume_btn | single_ep_btn | sep2;
   assign epsep = ep | single_ep;

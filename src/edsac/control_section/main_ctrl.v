@@ -88,7 +88,7 @@ module main_ctrl (
     .out     (sct_in_gate),
     .out_bar (sct_clear_gate),
     .set     (dv_d),
-    .reset   (ff_sct_reset)
+    .reset   (1'bx)				// Unused
     );
 
   delay #(.INTERVAL(1)) dl_sctig_reset (
@@ -97,7 +97,9 @@ module main_ctrl (
     .in  (sct_in_gate)
     );
 
+/* -----\/----- EXCLUDED -----\/-----
   assign ff_sct_reset = sct_reset_gate & d18;
+ -----/\----- EXCLUDED -----/\----- */
 
   assign stop_one = stop_one_a | stop_one_b | stop_one_c;
 

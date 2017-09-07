@@ -42,12 +42,14 @@ module coincidence (
 
   wire comp_res; // CU compare result.
   wire dl_sr_out;
+  wire dl_stim_out;
   wire coincidence;
   wire cu_window_set;
   wire cu_window_reset;
   wire cu_window;
   wire ff_cs_out;
   wire ff_cc_out;
+  wire ff_cc_set;
   wire dl_cc_in;
   wire dl_cgr_out;
   wire ff_cu_gate_reset;
@@ -122,10 +124,12 @@ module coincidence (
 
 
   // 1 M/C delay to allow data to move out from the Memory Tank.
+/* -----\/----- EXCLUDED -----\/-----
   delay #(.INTERVAL(36)) dl_rpulse (
     .out (dl_rp_out),
     .clk (clk),
     .in  (coincidence)
     );
+ -----/\----- EXCLUDED -----/\----- */
 
 endmodule

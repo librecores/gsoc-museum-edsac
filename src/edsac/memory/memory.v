@@ -34,6 +34,6 @@ module memory
       .data_clr     (tn_clr)
      );
 
-   assign mob_tn = tn_out ? monitor[0] : 1'bz;
+   assign mob_tn = tn_out ? monitor[0] : 1'bx;
 
 endmodule

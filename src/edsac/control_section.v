@@ -66,6 +66,7 @@ module control_section (
   input wire  d27,
   input wire  d28,
   input wire  d29,
+  input wire  d30,		// To do - not currently used.
   input wire  d31,
   input wire  d32,
   input wire  d33,
@@ -476,7 +477,8 @@ module control_section (
     .mcand_in (mcand_in),
     .c5       (c5),
     .c6       (c6),
-    .s2       (s2)
+    .s2       (s2),
+    .clk      (clk)
     );
 
   ccu_3 ccu_3 (
@@ -602,7 +604,8 @@ module control_section (
     .odd_d0  (odd_d0),
     .r2      (r2),
     .s2      (s2),
-    .op_u    (op_u)
+    .op_u    (op_u),
+    .clk     (clk)
     );
 
   ccu_10 ccu_10 (
@@ -620,7 +623,8 @@ module control_section (
     .extended_pos (extended_pos),
     .odd_d0       (odd_d0),
     .op_j         (op_j),
-    .s2           (s2)
+    .s2           (s2),
+    .clk          (clk)
     );
 
   /* Each of the following four instances of Order Decoder 2 
@@ -1334,9 +1338,9 @@ module control_section (
     );
 
   engineer_control_panel engineer_control_panel (
-    .eng_mode_neg  (eng_mode_neg),
-    .eng_order (eng_order),
-    .order_clr (order_clr),
+    .eng_mode_neg    (eng_mode_neg),
+    .eng_order       (eng_order),
+    .order_clr       (order_clr),
     .d0              (d0),
     .d18             (d18),
     .d19             (d19),

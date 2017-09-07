@@ -8,7 +8,7 @@
   // All PMOD outputs
   // {PMOD[37:20], PMOD[16], PMOD[11:8]} reused for Control 
   // Switches and Engineer's Control Panel buttons.
-  output wire [55:0] PMOD,
+  //output wire [55:0] PMOD,
 
   // Assign external buttons for Control Switches module.
   // Using GPIO PMODs 3 and 5 with push buttons.
@@ -54,7 +54,7 @@
 
   // Set unused pmod pins to default
   // PMOD[55] is LED1 on board, PMOD[54] is LED2, and so on.
-  assign PMOD[55:0] = {56{1'bz}};
+  //assign PMOD[55:0] = {56{1'b0}};
 
   // EDSAC ran at a clock of 500KHz.
   reg [7:0] count = 0;
