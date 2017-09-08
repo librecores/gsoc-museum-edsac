@@ -1,4 +1,16 @@
-/* Timing Control Tank and Shifting Unit. ev_d0 from CCU 2 is admitted in as zero_d0 
+/* Copyright 2017 Hatim Kanchwala
+ *
+ * Contributor Hatim Kanchwala <hatim@hatimak.me>
+ *
+ * This file is licensed under the CERN OHL v. 1.2. You may redistribute and 
+ * modify this documentation under the terms of the 
+ * CERN OHL v.1.2. (http://ohwr.org/cernohl). This documentation is distributed 
+ * WITHOUT ANY EXPRESS OR IMPLIED WARRANTY, INCLUDING OF MERCHANTABILITY, 
+ * SATISFACTORY QUALITY AND FITNESS FOR A PARTICULAR PURPOSE. Please see the 
+ * CERN OHL v.1.2 for applicable conditions.
+ */
+ 
+ /* Timing Control Tank and Shifting Unit. ev_d0 from CCU 2 is admitted in as zero_d0 
  * into the Tank. This recirculates via two feedback paths, one of which introduces 
  * an additional delay of 1 p.i. So every two minor cycles, the pulse is delayed to 
  * arrive 1 p.i. later. Together these two pulse form dx and dy - dx indicating start 

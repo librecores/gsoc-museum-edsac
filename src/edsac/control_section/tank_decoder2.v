@@ -1,4 +1,16 @@
-/* This is the top level of final stage of Tank decoding. Uses 
+/* Copyright 2017 Hatim Kanchwala
+ *
+ * Contributor Hatim Kanchwala <hatim@hatimak.me>
+ *
+ * This file is licensed under the CERN OHL v. 1.2. You may redistribute and 
+ * modify this documentation under the terms of the 
+ * CERN OHL v.1.2. (http://ohwr.org/cernohl). This documentation is distributed 
+ * WITHOUT ANY EXPRESS OR IMPLIED WARRANTY, INCLUDING OF MERCHANTABILITY, 
+ * SATISFACTORY QUALITY AND FITNESS FOR A PARTICULAR PURPOSE. Please see the 
+ * CERN OHL v.1.2 for applicable conditions.
+ */
+ 
+ /* This is the top level of final stage of Tank decoding. Uses 
  * least two significant bits of the Tank Number field 
  * (bit 7 and 8, corresponding to f7_pos/f7_neg and f8_pos/f8_neg 
  * respectively) to determine particular Memory Tank to select 

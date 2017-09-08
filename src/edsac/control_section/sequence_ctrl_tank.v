@@ -1,4 +1,16 @@
-/* Sequence Control Tank is what one would call an "Instruction Register" 
+/* Copyright 2017 Hatim Kanchwala
+ *
+ * Contributor Hatim Kanchwala <hatim@hatimak.me>
+ *
+ * This file is licensed under the CERN OHL v. 1.2. You may redistribute and 
+ * modify this documentation under the terms of the 
+ * CERN OHL v.1.2. (http://ohwr.org/cernohl). This documentation is distributed 
+ * WITHOUT ANY EXPRESS OR IMPLIED WARRANTY, INCLUDING OF MERCHANTABILITY, 
+ * SATISFACTORY QUALITY AND FITNESS FOR A PARTICULAR PURPOSE. Please see the 
+ * CERN OHL v.1.2 for applicable conditions.
+ */
+ 
+ /* Sequence Control Tank is what one would call an "Instruction Register" 
  * or "Program Counter" in modern computer architecture terms. This unit 
  * has an 18 bit 36 us delay line along with a half adder to increment 
  * value on receipt of EP.

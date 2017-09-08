@@ -1,4 +1,16 @@
-module acc_shift_i (
+/* Copyright 2017 Hatim Kanchwala
+ *
+ * Contributor Hatim Kanchwala <hatim@hatimak.me>
+ *
+ * This file is licensed under the CERN OHL v. 1.2. You may redistribute and 
+ * modify this documentation under the terms of the 
+ * CERN OHL v.1.2. (http://ohwr.org/cernohl). This documentation is distributed 
+ * WITHOUT ANY EXPRESS OR IMPLIED WARRANTY, INCLUDING OF MERCHANTABILITY, 
+ * SATISFACTORY QUALITY AND FITNESS FOR A PARTICULAR PURPOSE. Please see the 
+ * CERN OHL v.1.2 for applicable conditions.
+ */
+ 
+ module acc_shift_i (
   output wire       mob8,
   output wire [3:0] x, // Gating EMFs to ASU II. x[0] corresponds to x1 of original logic, x[1] to x2 and so on.
 

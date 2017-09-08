@@ -1,4 +1,16 @@
-/* The EDSAC had 32 memory tanks, each designed to hold 
+/* Copyright 2017 Hatim Kanchwala
+ *
+ * Contributor Hatim Kanchwala <hatim@hatimak.me>
+ *
+ * This file is licensed under the CERN OHL v. 1.2. You may redistribute and 
+ * modify this documentation under the terms of the 
+ * CERN OHL v.1.2. (http://ohwr.org/cernohl). This documentation is distributed 
+ * WITHOUT ANY EXPRESS OR IMPLIED WARRANTY, INCLUDING OF MERCHANTABILITY, 
+ * SATISFACTORY QUALITY AND FITNESS FOR A PARTICULAR PURPOSE. Please see the 
+ * CERN OHL v.1.2 for applicable conditions.
+ */
+ 
+ /* The EDSAC had 32 memory tanks, each designed to hold 
  * 16 full words (36 bits, 72 us delay). It took 1.152 ms for 
  * one complete circulation. Thus 512 full words (576 bits) 
  * could be stored in all. Later in its lifetime, the capacity 

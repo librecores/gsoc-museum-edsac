@@ -1,4 +1,16 @@
-/* Flipflops in Tank Number Flashing Unit are set by gating either 
+/* Copyright 2017 Hatim Kanchwala
+ *
+ * Contributor Hatim Kanchwala <hatim@hatimak.me>
+ *
+ * This file is licensed under the CERN OHL v. 1.2. You may redistribute and 
+ * modify this documentation under the terms of the 
+ * CERN OHL v.1.2. (http://ohwr.org/cernohl). This documentation is distributed 
+ * WITHOUT ANY EXPRESS OR IMPLIED WARRANTY, INCLUDING OF MERCHANTABILITY, 
+ * SATISFACTORY QUALITY AND FITNESS FOR A PARTICULAR PURPOSE. Please see the 
+ * CERN OHL v.1.2 for applicable conditions.
+ */
+ 
+ /* Flipflops in Tank Number Flashing Unit are set by gating either 
  * SCT (Stage 1 of main control) or Order (from Order Tank, Stage 2 
  * of main control). The Tank Number Flashing Unit is responsivble 
  * for selecting and providing a route to a particular tank (while CU 

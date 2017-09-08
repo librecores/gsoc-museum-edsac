@@ -1,4 +1,16 @@
-/* Coincidence Unit is responsible for selecting the position 
+/* Copyright 2017 Hatim Kanchwala
+ *
+ * Contributor Hatim Kanchwala <hatim@hatimak.me>
+ *
+ * This file is licensed under the CERN OHL v. 1.2. You may redistribute and 
+ * modify this documentation under the terms of the 
+ * CERN OHL v.1.2. (http://ohwr.org/cernohl). This documentation is distributed 
+ * WITHOUT ANY EXPRESS OR IMPLIED WARRANTY, INCLUDING OF MERCHANTABILITY, 
+ * SATISFACTORY QUALITY AND FITNESS FOR A PARTICULAR PURPOSE. Please see the 
+ * CERN OHL v.1.2 for applicable conditions.
+ */
+ 
+ /* Coincidence Unit is responsible for selecting the position 
  * of a particular word (short or long) within the 16 minor cycles 
  * in circulation in a Memory Tank. CU needs to be engaged in both 
  * the Stage 1 to fetch the order from memory, and in Stage 2 to fetch 

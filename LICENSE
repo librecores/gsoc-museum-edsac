@@ -1,4 +1,4 @@
-ERN Open Hardware Licence v1.2 
+CERN Open Hardware Licence v1.2 
 
 Preamble
 

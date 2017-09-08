@@ -1,4 +1,16 @@
-/* Order Decoder 2 is the final stage in decoding an order. 
+/* Copyright 2017 Hatim Kanchwala
+ *
+ * Contributor Hatim Kanchwala <hatim@hatimak.me>
+ *
+ * This file is licensed under the CERN OHL v. 1.2. You may redistribute and 
+ * modify this documentation under the terms of the 
+ * CERN OHL v.1.2. (http://ohwr.org/cernohl). This documentation is distributed 
+ * WITHOUT ANY EXPRESS OR IMPLIED WARRANTY, INCLUDING OF MERCHANTABILITY, 
+ * SATISFACTORY QUALITY AND FITNESS FOR A PARTICULAR PURPOSE. Please see the 
+ * CERN OHL v.1.2 for applicable conditions.
+ */
+ 
+ /* Order Decoder 2 is the final stage in decoding an order. 
  * There are 4 instances of this top-level module, so 32 possible 
  * outputs. Each of the four instances uses the three least significant 
  * bits of the opcode (the two most significant bits used in the previous 
